@@ -22,7 +22,7 @@ router.post('/data.json', function(req, res) {
 		contents.push(req.body)
 		fs.writeFile('_data.json', JSON.stringify(contents, null, 4), function (err) {
 			res.setHeader('Content-Type', 'application/json');
-			res.setHeadeR('Cache-Control', 'no-cache');
+			res.setHeader('Cache-Control', 'no-cache');
 			res.send(JSON.stringify(contents));
 		});
 	});

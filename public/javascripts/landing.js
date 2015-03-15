@@ -11,6 +11,23 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 			}.bind(this)
 		});
 	},
+	handleCommentSubmit: function(comment) {
+		var comments = this.state.data;
+		var newComments = comments.concat([comment]);
+		this.setState({data: newComments});
+		$.ajax({
+		url: this.props.url,
+		dataType: 'json',
+		type: 'POST',
+		data: comment,
+		success: function(response) {
+			this.setState({data: response});
+		}.bind(this),
+		error: function(xhr, status, err) {
+			console.error(this.props.url, status, err.toString());
+		}.bind(this)
+		});
+	},	
 	getInitialState: function() {
 		return {data: []};
 	}, 
@@ -23,7 +40,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 		<div className="commentBox">
 			<h1>Comments</h1>
 			<CommentList data={this.state.data} />
-			<CommentForm />
+			<CommentForm onCommentSubmit={this.handleCommentSubmit} />
 		</div>
 		);
 	}
@@ -52,16 +69,16 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
     		if (!text || !author) {
       			return;
     		}
-    		// TODO: send request to the server
+		this.props.onCommentSubmit({author: author, text: text}); 
          	this.refs.author.getDOMNode().value = '';
              	this.refs.text.getDOMNode().value = '';
                },
 	render: function() {
 		return (
 		<div className="commentForm">
-      		<form className="commentForm">
-        		<input type="text" placeholder="Your name" refs="author" />
-        		<input type="text" placeholder="Say something..." refs="text" />
+      		<form className="commentForm" onSubmit={this.handleSubmit}>
+        		<input type="text" placeholder="Your name" ref="author" />
+        		<input type="text" placeholder="Say something..." ref="text" />
         		<input type="submit" value="Post" />
       		</form>
 		</div>
