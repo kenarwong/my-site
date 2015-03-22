@@ -1,6 +1,5 @@
 var express = require('express');
-var mongoose = require('mongoose');
-var User = require('../models/users.js');
+var Comment = require('../models/comment.js');
 var router = express.Router();
 
 // /* GET users listing. */
@@ -9,14 +8,14 @@ var router = express.Router();
 // });
 
 router.get('/', function (req, res) {
-    User.find({}, function (err, docs) {
+    Comment.find({}, function (err, docs) {
         res.json(docs);
     });
 });
 
 router.get('/:author', function (req, res) {
     if (req.params.author) {
-        User.find({ author: req.params.author }, function (err, docs) {
+        Comment.find({ author: req.params.author }, function (err, docs) {
             res.json(docs);
         });
     }

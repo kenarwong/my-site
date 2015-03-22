@@ -16,16 +16,16 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 		var newComments = comments.concat([comment]);
 		this.setState({data: newComments});
 		$.ajax({
-		url: this.props.url,
-		dataType: 'json',
-		type: 'POST',
-		data: comment,
-		success: function(response) {
-			this.setState({data: response});
-		}.bind(this),
-		error: function(xhr, status, err) {
-			console.error(this.props.url, status, err.toString());
-		}.bind(this)
+			url: this.props.url,
+			dataType: 'json',
+			type: 'POST',
+			data: comment,
+			success: function(response) {
+				this.setState({data: response});
+			}.bind(this),
+			error: function(xhr, status, err) {
+				console.error(this.props.url, status, err.toString());
+			}.bind(this)
 		});
 	},	
 	getInitialState: function() {
@@ -69,10 +69,10 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
     		if (!text || !author) {
       			return;
     		}
-		this.props.onCommentSubmit({author: author, text: text}); 
-         	this.refs.author.getDOMNode().value = '';
-             	this.refs.text.getDOMNode().value = '';
-               },
+			this.props.onCommentSubmit({author: author, text: text}); 
+        	this.refs.author.getDOMNode().value = '';
+        	this.refs.text.getDOMNode().value = '';
+    },
 	render: function() {
 		return (
 		<div className="commentForm">
@@ -105,6 +105,6 @@ var data = [
 ];
 
 React.render(
-	<CommentBox url="api/data.json" pollInterval={2000} />,
+	<CommentBox url="api/comment" pollInterval={2000} />,
 	document.getElementById('content-wrapper')
 );

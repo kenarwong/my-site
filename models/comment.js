@@ -16,7 +16,7 @@ var schema = new mongoose.Schema({
   , text       : String
 });
 
-var User = mongoose.model('User', schema);
+var Comment = mongoose.model('Comment', schema);
 
 // make this available to our users in our Node applications
-module.exports = User;
+module.exports = Comment;
