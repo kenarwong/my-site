@@ -4,6 +4,8 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var mongoose = require('mongoose');
+var fs = require('fs');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -45,7 +47,21 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
+
+  var db = mongoose.connection;
+
+  db.on('error', console.error);
+  db.once('open', function() {
+  	console.log('db connected');
+  });
+
+  // Connect to our mongo database
+  mongoose.connect('mongodb://localhost/mydb');
 }
+
+fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+      if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
+});
 
 // production error handler
 // no stacktraces leaked to user
