@@ -99,11 +99,6 @@ var Comment = React.createClass({displayName: 'Comment',
 	}
 });
 
-var data = [
-  {author: "Pete Hunt", text: "This is one comment"},
-  {author: "Jordan Walke", text: "This is *another* comment"}
-];
-
 React.render(
 	<CommentBox url="api/comment" pollInterval={2000} />,
 	document.getElementById('content-wrapper')
