@@ -10,9 +10,15 @@
   <body>
     <h1><%= title %></h1>
     <div id="header">
-      <p>Welcome to <%= title %></p>
+      <!--<p>Welcome to <%= title %></p>-->
     </div>
-    <div id="nav"></div>
+    <div id="nav">
+      <ul>
+        <% for(var i=0; i<navitems.length; i++) {%>
+        <li><a href='<%= navitems[i].navurl %>'><%= navitems[i].friendlyname %></a></li>
+        <% } %>
+      </ul>
+    </div>
 	  <div id="content-wrapper"></div>
 	  <script type="text/jsx;harmony=true" src="/javascripts/landing.js"></script>
   </body>
