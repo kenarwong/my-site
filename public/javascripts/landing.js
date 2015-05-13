@@ -38,7 +38,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 	render: function() {
 		return (
 		<div className="commentBox">
-			<h1>Comments</h1>
+			<h3>Comments</h3>
 			<CommentList data={this.state.data} />
 			<CommentForm onCommentSubmit={this.handleCommentSubmit} />
 		</div>
@@ -90,9 +90,9 @@ var Comment = React.createClass({displayName: 'Comment',
 	render: function() { 
 		return (
 		<div className="comment">
-			<h2 className="author">
+			<h4 className="author">
 			{this.props.author}
-			</h2>
+			</h4>
 			<span>{this.props.children.toString()}</span>
 		</div>
 		);

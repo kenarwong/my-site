@@ -2,15 +2,16 @@
 <html>
 	<head>
     	<title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheets/reset.css' />
+    	<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
     	<link rel='stylesheet' href='/stylesheets/style.css' />
   		<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/JSXTransformer.js"></script>
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 	</head>
   <body>
-    <h1><%= title %></h1>
     <div id="header">
-      <!--<p>Welcome to <%= title %></p>-->
+      <h1>Welcome to my site</h1>
     </div>
     <div id="nav">
       <ul>
@@ -19,7 +20,10 @@
         <% } %>
       </ul>
     </div>
-	  <div id="content-wrapper"></div>
+    <h1><%= title %></h1>
+    <div class="container-fluid">
+      <div id="content-wrapper"></div>
+    </div>
 	  <script type="text/jsx;harmony=true" src="/javascripts/landing.js"></script>
   </body>
 </html>
