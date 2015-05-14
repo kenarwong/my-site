@@ -23,5 +23,11 @@
     "react": "^0.13.3",
     "react-tools": "^0.13.3",
     "serve-favicon": "^2.2.0"
+  },
+  "devDependencies": {
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-copy": "^0.8.0",
+    "grunt-react": "^0.12.2"
   }
 }
