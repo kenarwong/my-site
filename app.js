@@ -47,17 +47,25 @@ if (app.get('env') === 'development') {
       error: err
     });
   });
-
-  var db = mongoose.connection;
-
-  db.on('error', console.error);
-  db.once('open', function() {
-  	console.log('db connected');
-  });
-
-  // Connect to our mongo database
-  mongoose.connect('mongodb://localhost/mydb');
+} else if (app.get('env') === 'production') {
 }
+
+// Open db
+if (app.get('env') === 'development') {
+  console.log('dev build');
+} else if (app.get('env') === 'production') {
+  console.log('prod build');
+}
+
+var db = mongoose.connection;
+
+db.on('error', console.error);
+db.once('open', function() {
+  console.log('db connected');
+});
+
+// Connect to our mongo database
+mongoose.connect('mongodb://localhost/mydb');
 
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
       if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
