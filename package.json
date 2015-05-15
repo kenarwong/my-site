@@ -3,8 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "prestart": "sh ./bin/build",
-    "start": "node ./bin/www"
+    "start": "sh ./bin/www"
   },
   "repository": {
     "type": "git",
