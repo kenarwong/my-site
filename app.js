@@ -12,6 +12,7 @@ var users = require('./routes/users');
 var api = require('./routes/api');
 
 var app = express();
+//app.locals.env = app.get('env');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

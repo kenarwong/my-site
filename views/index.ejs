@@ -2,16 +2,20 @@
 <html>
 	<head>
     	<title><%= title %></title>
-    	<!--<link rel='stylesheet' href='/stylesheets/reset.css' />
-    	<link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
-      <link rel='stylesheet' href='/stylesheets/style.css' />-->
-      <link rel='stylesheet' href='/build/prod.css' />
+      <% if(env === "development") { %>
+    	  <link rel='stylesheet' href='/build/css/reset.css' />
+    	  <link rel='stylesheet' href='/build/css/bootstrap.min.css' />
+        <link rel='stylesheet' href='/build/css/style.css' />
+        <script src="/build/js/libs/react.min.js"></script>
+        <script src="/build/js/libs/jquery.min.js"></script>
+        <script src="/build/js/commentSection.js"></script>
+      <% } else if (env === "production") { %>
+        <link rel='stylesheet' href='/build/prod.css' />
+        <script src="/build/prod.js"></script>
+      <% } else { %>
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>-->
-      <!--<script src="/javascripts/libs/react.min.js"></script>-->
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/JSXTransformer.js"></script>-->
-      <!--<script src="/javascripts/libs/jquery.min.js"></script>-->
-      <script src="/build/prod.js"></script>
-      
+      <% } %>
 	</head>
   <body>
     <div id="header">

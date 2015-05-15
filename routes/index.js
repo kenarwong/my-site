@@ -16,7 +16,9 @@ router.get('/:nav?', function(req, res, next) {
       return console.log('not found: ' + req.params.nav);
     } else {
       var friendlyname = navfilter[0].friendlyname;
+      //console.log(req.app.get('env'));
       res.render('index', { 
+        env: req.app.get('env'),
         title: friendlyname,
         navitems: navitems
       });
