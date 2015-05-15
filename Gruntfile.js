@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     // 1. All configuration goes here 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['public/build/'],
+        clean: ['public/build/', 'dev/js/min/'],
         concat: {
             js: {
                 src: [
