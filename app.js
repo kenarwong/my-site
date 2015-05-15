@@ -40,6 +40,7 @@ app.use(function(req, res, next) {
 // development error handler
 // will print stacktrace
 if (app.get('env') === 'development') {
+  console.log('dev build');
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
     res.render('error', {
@@ -48,13 +49,15 @@ if (app.get('env') === 'development') {
     });
   });
 } else if (app.get('env') === 'production') {
+  console.log('prod build');
 }
 
 // Open db
+var connectionString;
 if (app.get('env') === 'development') {
-  console.log('dev build');
+  connectionString = 'mongodb://localhost/mydb';
 } else if (app.get('env') === 'production') {
-  console.log('prod build');
+  connectionString = 'mongodb://localhost/mydb';
 }
 
 var db = mongoose.connection;
@@ -65,7 +68,7 @@ db.once('open', function() {
 });
 
 // Connect to our mongo database
-mongoose.connect('mongodb://localhost/mydb');
+mongoose.connect(connectionString);
 
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
       if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);

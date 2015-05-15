@@ -1,1 +1,5 @@
+# Vim
+*.swp
+
+# Deployment files
 public/build/*
