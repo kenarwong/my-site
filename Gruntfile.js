@@ -49,8 +49,8 @@ module.exports = function(grunt) {
         uglify: {
           target: {
             options: {
-              sourceMap: true,
-              sourceMapName: 'public/build/sourcemap.map'
+              //sourceMap: true,
+              //sourceMapName: 'public/build/sourcemap.map'
             },
             files: [{
               expand: true,
