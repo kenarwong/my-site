@@ -26,6 +26,12 @@ module.exports = function(grunt) {
             src: 'dev/js/libs/jquery.min.map',
             dest: 'public/build/jquery.min.map'
           },
+          fonts: {
+            cwd: 'dev/',
+            src: 'fonts/*',
+            dest: 'public/build/',
+            expand: true
+          },
           devfiles: {
             cwd: 'dev/',
             src: ['**/*','!**/jsx/**'],
@@ -72,7 +78,7 @@ module.exports = function(grunt) {
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['clean','concat','copy:jquerymap']);
     grunt.registerTask('reset', ['clean']);
-    grunt.registerTask('prod', ['clean','react','uglify','concat','copy:jquerymap']);
+    grunt.registerTask('prod', ['clean','react','uglify','concat','copy:jquerymap','copy:fonts']);
     grunt.registerTask('dev', ['clean','react','copy:devfiles']);
 
 };
