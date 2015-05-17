@@ -5,19 +5,25 @@ module.exports = function(grunt) {
         pkg: grunt.file.readJSON('package.json'),
         clean: ['public/build/', 'dev/js/min/'],
         concat: {
-            js: {
+            lib: {
                 src: [
                     'dev/js/libs/jquery.min.js',
-                    'dev/js/libs/bootstrap.min.js',
+                    //'dev/js/libs/bootstrap.min.js',
                     'dev/js/libs/react.min.js',
                     'dev/js/min/*.js'  // My files
                     ],
-                dest: 'public/build/prod.js',
+                dest: 'public/build/lib.js',
+            },
+            main: {
+                src: [
+                    'dev/js/min/*.js'  // My files
+                    ],
+                dest: 'public/build/main.js',
             },
             css: {
                 src: [
                     'dev/css/reset.css',
-                    'dev/css/bootstrap.min.css',
+                    //'dev/css/bootstrap.min.css',
                     'dev/css/style.css'
                 ],
                 dest: 'public/build/prod.css',

@@ -1,7 +1,7 @@
 $(document).ready(function() {
   React.render(
       <CommentBox url="api/comment" />, //pollInterval={2000}
-      document.getElementById('content-wrapper')
+      document.getElementById('comment-box')
       );
 });
 

@@ -6,3 +6,55 @@ body {
 a {
   color: #00B7FF;
 }*/
+
+.clearfix:before,
+.clearfix:after {
+  content: " ";
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix {
+  *zoom: 1;
+}
+div#header {
+  text-align: center;
+}
+nav {
+  /*height: 5em;
+  height: calc(5em);*/
+  width: 100%;
+  margin: 0 auto;
+  /*background-color:rgba(22, 107, 162,0.75);*/
+  /*font-size: 0.7em;
+  font-family: 'Arsenal', Arial, sans-serif;
+  font-weight: bold;
+  font-style:none;*/
+  /*position: absolute;
+  top:0;*/
+  text-align: center;
+  border: 1px solid black;
+}
+nav ul {
+  padding: 0;
+  margin: 0 auto;
+  /*max-width: 990px;*/
+  /*height: 2em;*/
+}
+nav li {
+  display: inline-block;
+  width: calc(100%/5);
+  float: left;
+  border: 1px solid red;
+}
+nav a {
+  /*color: #fff;*/
+  display: block;
+  width: 100%;
+  height: 3em;
+  /*text-align: center;*/
+  /*text-decoration: none;*/
+  /*line-height: 2em;*/
+  /*text-shadow: 1px 1px 0px #283744;*/
+}

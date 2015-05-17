@@ -2,37 +2,46 @@
 <html>
 	<head>
       <meta name="viewport" content="width=device-width, initial-scale=1">
-    	<title><%= title %></title>
+      <title><%= title %></title>
       <% if(env === "development") { %>
-    	  <link rel='stylesheet' href='/build/css/reset.css' />
-    	  <link rel='stylesheet' href='/build/css/bootstrap.min.css' />
+        <link rel='stylesheet' href='/build/css/reset.css' />
+        <!--<link rel='stylesheet' href='/build/css/bootstrap.min.css' />-->
         <link rel='stylesheet' href='/build/css/style.css' />
         <script src="/build/js/libs/react.min.js"></script>
         <script src="/build/js/libs/jquery.min.js"></script>
-        <script src="/build/js/commentSection.js"></script>
       <% } else if (env === "production") { %>
         <link rel='stylesheet' href='/build/prod.css' />
-        <script src="/build/prod.js"></script>
       <% } else { %>
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/react.js"></script>-->
       <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.12.2/JSXTransformer.js"></script>-->
       <% } %>
-	</head>
+  </head>
   <body>
     <div id="header">
       <h1>Welcome to my site</h1>
     </div>
-    <div id="nav">
+    <nav>
       <ul>
         <% for(var i=0; i<navitems.length; i++) {%>
-        <li><a href='<%= navitems[i].navurl %>'><%= navitems[i].friendlyname %></a></li>
+        <li>
+          <a href='<%= navitems[i].navurl %>'>
+            <span><%= navitems[i].friendlyname %></span>
+          </a>
+        </li>
         <% } %>
+        <div class="clearfix"></div>
       </ul>
-    </div>
+    </nav>
     <h1><%= title %></h1>
     <div class="container-fluid">
-      <div id="content-wrapper"></div>
     </div>
+    <div id="comment-box"></div>
     <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
+    <% if(env === "development") { %>
+      <script src="/build/js/commentSection.js"></script>
+    <% } else if (env === "production") { %>
+      <script src="/build/main.js"></script>
+    <% } else { %>
+    <% } %>
   </body>
 </html>
