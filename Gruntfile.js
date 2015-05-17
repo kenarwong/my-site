@@ -10,7 +10,8 @@ module.exports = function(grunt) {
                     'dev/js/libs/jquery.min.js',
                     //'dev/js/libs/bootstrap.min.js',
                     'dev/js/libs/react.min.js',
-                    'dev/js/min/*.js'  // My files
+                    'dev/js/libs/modernizr-2.8.3-respond-1.4.2.min.js',
+                    //'dev/js/min/*.js'  // My files
                     ],
                 dest: 'public/build/lib.js',
             },
@@ -22,8 +23,10 @@ module.exports = function(grunt) {
             },
             css: {
                 src: [
-                    'dev/css/reset.css',
+                    //'dev/css/reset.css',
                     //'dev/css/bootstrap.min.css',
+                    'dev/css/normalize.min.css',
+                    'dev/css/main.css',
                     'dev/css/style.css'
                 ],
                 dest: 'public/build/prod.css',
