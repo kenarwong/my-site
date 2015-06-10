@@ -25,8 +25,9 @@ module.exports = function(grunt) {
                 src: [
                     //'dev/css/reset.css',
                     //'dev/css/bootstrap.min.css',
-                    'dev/css/normalize.min.css',
-                    'dev/css/main.css',
+                    //'dev/css/normalize.min.css',
+                    //'dev/css/main.css',
+                    'dev/css/normalize.css',
                     'dev/css/style.css'
                 ],
                 dest: 'public/build/prod.css',

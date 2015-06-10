@@ -2,7 +2,7 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang=""> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang=""> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang=""> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang=""> <!--<![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 
 <!--<html>-->
 	<head>
@@ -13,9 +13,10 @@
       <meta name="description" content="">
       <% if(env === "development") { %>
       <!--<link rel='stylesheet' href='/build/css/reset.css' />-->
-        <link rel="stylesheet" href="/build/css/normalize.min.css">
+        <!--<link rel="stylesheet" href="/build/css/normalize.min.css">
         <link rel="stylesheet" href="/build/css/main.css">
-        <!--<link rel='stylesheet' href='/build/css/bootstrap.min.css' />-->
+        <link rel='stylesheet' href='/build/css/bootstrap.min.css' />-->
+        <link rel='stylesheet' href='/build/css/normalize.css' />
         <link rel='stylesheet' href='/build/css/style.css' />
         <script src="/build/js/libs/react.min.js"></script>
         <script src="/build/js/libs/jquery.min.js"></script>
@@ -29,29 +30,29 @@
       <% } %>
   </head>
   <body>
-     <!--[if lt IE 8]>
-            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <div class="header-container">
-          <header class="wrapper clearfix">
-            <h1 class="title">Welcome to my site</h1>
-            <nav>
-              <ul>
-                <% for(var i=0; i<navitems.length; i++) {%>
-                <li>
-                  <a href='<%= navitems[i].navurl %>'>
-                    <%= navitems[i].friendlyname %>
-                  </a>
-                </li>
-                <% } %>
-              </ul>
-            </nav>
-          </header>
+    <!--[if lt IE 8]>
+      <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+      <![endif]-->
+      <header class="wrapper clearfix">
+        <!--<h1 class="title">Welcome to my site</h1>-->
+        <nav>
+          <label for="menu-switch">Menu</label>
+          <input id="menu-switch" type="checkbox"></input>
+          <ul>
+            <% for(var i=0; i<navitems.length; i++) {%>
+            <li class="">
+              <a href='<%= navitems[i].navurl %>'>
+                <%= navitems[i].friendlyname %>
+              </a>
+            </li>
+            <% } %>
+          </ul>
+        </nav>
+      </header>
+      <div class="main-container">
+        <div class="main wrapper clearfix">
+          <h1><%= title %></h1>
         </div>
-    <h1><%= title %></h1>
-    <div class="main-container">
-      <div class="main wrapper clearfix">
-      </div>
       <div id="comment-box"></div>
     </div>
 
@@ -63,6 +64,7 @@
 
     <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
     <% if(env === "development") { %>
+      <script src="/build/js/init.js"></script>
       <script src="/build/js/commentSection.js"></script>
     <% } else if (env === "production") { %>
       <script src="/build/main.js"></script>
