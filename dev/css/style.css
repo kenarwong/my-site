@@ -61,6 +61,7 @@ nav ul {
   height: 2.5em;*/
   padding: 1em 1em;
   border: 1px solid yellow;
+  margin: 0;
 }
   /*nav {
     position: fixed;
@@ -71,6 +72,7 @@ nav label, nav input[type="checkbox"] {
 }
 nav li {
   float: left;
+  text-align: center;
   list-style: none;
   border: 1px solid red;
 }
@@ -116,18 +118,56 @@ nav a {
     }
     nav label {
       text-align: center;
-      padding-top: 1em;
+      padding: .5em 0;
       width: inherit;
       display: block;
+
+      border: 1px solid red;
     }
-    nav input[type="checkbox"] + ul,
-    nav input[type="checkbox"] + ul li {
-      display: none;
+    nav ul {
+      padding: 0 1em;
+    }
+    nav input[type="checkbox"] + ul {
       /*visibility: hidden;*/
+      opacity: 0;
+      -webkit-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s;
+      transition: opacity 0.2s;
     }
-    nav input[type="checkbox"]:checked + ul, 
-    nav input[type="checkbox"]:checked + ul li {
-      display: block;
+    nav input[type="checkbox"] + ul li {
+      /*display: none;*/
+      /*visibility: hidden;
+      opacity: 0;*/
+      height: 0;
+      -webkit-transition: height 0.2s;
+      -moz-transition: height 0.2s;
+      -o-transition: height 0.2s;
+      transition: height 0.2s;
+    }
+    nav input[type="checkbox"] + ul {
+      /*height: 0;*/
+      /*opacity: 0;*/
+    }
+    nav input[type="checkbox"]:checked + ul {
       /*visibility: visible;*/
+      opacity: 1;
+      -webkit-transition: opacity 0.2s;
+      -moz-transition: opacity 0.2s;
+      -o-transition: opacity 0.2s;
+      transition: opacity 0.2s;
+    }
+    nav input[type="checkbox"]:checked + ul li {
+      /*display: block;*/
+      /*visibility: visible;
+      opacity: 1;*/
+      height: 1.5em;
+      -webkit-transition: height 0.2s;
+      -moz-transition: height 0.2s;
+      -o-transition: height 0.2s;
+      transition: height 0.2s;
+    }
+    nav input[type="checkbox"]:checked + ul {
+      /*opacity: 1;*/
     }
   }
