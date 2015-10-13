@@ -21,29 +21,32 @@ a {
 }
 header {
 }
-/* nav {
+nav {
   width: 100%;
-  margin: 1em;
+  /*margin: 1em;
   padding-left: 4em;
-  text-align: center;
+  text-align: center;*/
   border: 1px solid black;
 
-  -webkit-transition: width 0.2s;
+  /*-webkit-transition: width 0.2s;
   -moz-transition: width 0.2s;
   -o-transition: width 0.2s;
-  transition: width 0.2s;
+  transition: width 0.2s;*/
 }
 nav.scrolled {
   position: fixed;
-  padding: 0;
+  background-color: white;
+  opacity: .9;
+  /*padding: 0;
   width: 10em;
   right: .5em;
 
   -webkit-transition: width 0.2s;
   -moz-transition: width 0.2s;
   -o-transition: width 0.2s;
-  transition: width 0.2s;
+  transition: width 0.2s;*/
 }
+/* 
 nav.scrolled li {
   float: none;
 }
@@ -75,19 +78,44 @@ nav li {
   text-align: center;
   list-style: none;
   border: 1px solid red;
+  
+  padding-top: 0;
+  -webkit-transition: padding 0.2s;
+  -moz-transition: padding 0.2s;
+  -o-transition: padding 0.2s;
+  transition: padding 0.2s;
 }
 nav a {
   display: block;
   width: 100%;
   border: 1px solid red;
 }
-nav li.selected {
-  background-color: red;
-}
 #main-container {
   padding: 0 3em;
 }
 
+/* ----------- Non-mobile ----------- */
+
+@media screen and (min-width: 44em) {
+  nav li > a {
+    padding-top: 0;
+    -webkit-transition: padding 0.2s;
+    -moz-transition: padding 0.2s;
+    -o-transition: padding 0.2s;
+    transition: padding 0.2s;
+  }
+  nav li.selected > a {
+    padding-top: 1em;
+    background-color: red;
+  }
+  nav li:hover > a {
+    padding-top: 1em;
+    -webkit-transition: padding 0.2s;
+    -moz-transition: padding 0.2s;
+    -o-transition: padding 0.2s;
+    transition: padding 0.2s;
+  }
+}
 /* ----------- Mobile ----------- */
 
 /* @media only screen and (max-device-width: 480px) {
