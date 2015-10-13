@@ -20,7 +20,8 @@ router.get('/:nav?', function(req, res, next) {
       res.render('index', { 
         env: req.app.get('env'),
         title: friendlyname,
-        navitems: navitems
+        thisurl: navfilter[0].navurl,
+        navitems: navitems,
       });
     }
   });
