@@ -12,12 +12,14 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <meta name="description" content="">
       <% if(env === "development") { %>
-      <!--<link rel='stylesheet' href='/build/css/reset.css' />-->
-        <!--<link rel="stylesheet" href="/build/css/normalize.min.css">
+      <!--<link rel='stylesheet' href='/build/css/reset.css' />
         <link rel="stylesheet" href="/build/css/main.css">
+        <link rel="stylesheet" href="/build/css/normalize.min.css">
         <link rel='stylesheet' href='/build/css/bootstrap.min.css' />-->
+
         <link rel='stylesheet' href='/build/css/normalize.css' />
         <link rel='stylesheet' href='/build/css/style.css' />
+
         <script src="/build/js/libs/react.min.js"></script>
         <script src="/build/js/libs/jquery.min.js"></script>
         <script src="/build/js/libs/modernizr-2.8.3-respond-1.4.2.min.js"></script>
@@ -35,12 +37,12 @@
       <![endif]-->
       <header class="wrapper clearfix">
         <!--<h1 class="title">Welcome to my site</h1>-->
-        <nav>
+        <nav role="full-horizontal">
           <label for="menu-switch">Menu</label>
           <input id="menu-switch" type="checkbox"></input>
-          <ul>
+          <ul class="clearfix">
             <% for(var i=0; i<navitems.length; i++) {%>
-            <li class="">
+            <li class="<%= navitems[i]=='index'?'selected':'' %>">
               <a href='<%= navitems[i].navurl %>'>
                 <%= navitems[i].friendlyname %>
               </a>
@@ -49,26 +51,27 @@
           </ul>
         </nav>
       </header>
-      <div class="main-container">
-        <div class="main wrapper clearfix">
-          <h1><%= title %></h1>
-        </div>
-      <div id="comment-box"></div>
-    </div>
+      <div id="main-container">
+          <div class="main wrapper clearfix">
+            <h1><%= title %></h1>
+          </div>
+        <div id="main-content"></div>
+        <div id="comment-box"></div>
+      </div>
 
-    <div class="footer-container">
-      <footer class="wrapper">
-        <h3>footer</h3>
-      </footer>
-    </div>
+      <div class="footer-container">
+        <footer class="wrapper">
+          <h4>footer</h4>
+        </footer>
+      </div>
 
-    <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
-    <% if(env === "development") { %>
-      <script src="/build/js/init.js"></script>
-      <script src="/build/js/commentSection.js"></script>
-    <% } else if (env === "production") { %>
-      <script src="/build/main.js"></script>
-    <% } else { %>
-    <% } %>
+      <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
+      <% if(env === "development") { %>
+        <script src="/build/js/init.js"></script>
+        <script src="/build/js/commentSection.js"></script>
+      <% } else if (env === "production") { %>
+        <script src="/build/main.js"></script>
+      <% } else { %>
+      <% } %>
   </body>
 </html>

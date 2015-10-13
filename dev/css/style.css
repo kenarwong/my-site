@@ -21,7 +21,7 @@ a {
 }
 header {
 }
-nav {
+/* nav {
   width: 100%;
   margin: 1em;
   padding-left: 4em;
@@ -55,19 +55,24 @@ nav ul, nav label {
   padding: 0;
   margin: 0 auto;
 }
+*/
 nav ul {
-  width: inherit;
-  height: 2.5em;
-  padding: 1em 0;
+  /*width: inherit;
+  height: 2.5em;*/
+  padding: 1em 1em;
   border: 1px solid yellow;
 }
+  /*nav {
+    position: fixed;
+    top: 0;
+  }*/
 nav label, nav input[type="checkbox"] {
   display: none;
 }
 nav li {
-  /*width: calc(100%/5);*/
   float: left;
   list-style: none;
+  border: 1px solid red;
 }
 nav a {
   display: block;
@@ -77,9 +82,10 @@ nav a {
 #main-container {
   padding: 0 3em;
 }
+
 /* ----------- Mobile ----------- */
 
-@media only screen and (max-device-width: 480px) {
+/* @media only screen and (max-device-width: 480px) {
   nav {
     padding: 0;
     margin: 0;
@@ -102,16 +108,26 @@ nav a {
     position: absolute;
     height: 0;
   }
-  nav label {
-    width: inherit;
-    height: 2em;
-    float: none;
-    display: block;
+} */
+
+  @media screen and (max-width: 44em) {
+    nav[role='full-horizontal'] ul > li {
+      width: 100%;
+    }
+    nav label {
+      text-align: center;
+      padding-top: 1em;
+      width: inherit;
+      display: block;
+    }
+    nav input[type="checkbox"] + ul,
+    nav input[type="checkbox"] + ul li {
+      display: none;
+      /*visibility: hidden;*/
+    }
+    nav input[type="checkbox"]:checked + ul, 
+    nav input[type="checkbox"]:checked + ul li {
+      display: block;
+      /*visibility: visible;*/
+    }
   }
-  nav input[type="checkbox"] + ul li {
-    visibility: hidden;
-  }
-  nav input[type="checkbox"]:checked + ul li {
-    visibility: visible;
-  }
-}
