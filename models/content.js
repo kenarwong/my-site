@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 
 // Create a new schema for our tweet data
 var schema = new mongoose.Schema({
-    author     : String
-  , text       : String
-}, { collection: "comments" });
+    id    : String
+  , text  : String
+}, { collection: "content" });
 
-var Comment = mongoose.model('Comment', schema);
+var Content = mongoose.model('Content', schema);
 
 // make this available to our users in our Node applications
-module.exports = Comment;
+module.exports = Content;
