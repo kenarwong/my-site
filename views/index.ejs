@@ -37,6 +37,7 @@
       <![endif]-->
       <header class="wrapper clearfix">
         <!--<h1 class="title">Welcome to my site</h1>-->
+        <div id="nav-placeholder"></div>
         <nav role="full-horizontal">
           <label for="menu-switch">Menu</label>
           <input id="menu-switch" type="checkbox"></input>
@@ -52,15 +53,15 @@
         </nav>
       </header>
       <div id="main-container">
-          <div class="main wrapper clearfix">
-            <h1><%= title %></h1>
+        <div class="main wrapper clearfix">
+          <h1><%= title %></h1>
+          <div id="main-content">
+            <p>Main content goes here</p>
           </div>
-        <div id="main-content">
-          <p>Main content goes here</p>
+          <hr>
         </div>
         <div id="comment-box"></div>
       </div>
-
       <div class="footer-container">
         <footer class="wrapper">
           <h4>A footer goes here</h4>

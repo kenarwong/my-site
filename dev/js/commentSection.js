@@ -46,8 +46,8 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 		return (
 		React.createElement("div", {className: "commentBox"}, 
 			React.createElement("h3", null, "Comments"), 
-			React.createElement(CommentList, {data: this.state.data}), 
-			React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit})
+			React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
+			React.createElement(CommentList, {data: this.state.data})
 		)
 		);
 	}

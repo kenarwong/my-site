@@ -32,20 +32,25 @@ nav {
   -moz-transition: width 0.2s;
   -o-transition: width 0.2s;
   transition: width 0.2s;*/
+
+  position: fixed;
+  top: 0;
+  background-color: white;
+  opacity: .9;
 }
-nav.scrolled {
+/*nav.scrolled {
   position: fixed;
   background-color: white;
   opacity: .9;
-  /*padding: 0;
+  padding: 0;
   width: 10em;
   right: .5em;
 
   -webkit-transition: width 0.2s;
   -moz-transition: width 0.2s;
   -o-transition: width 0.2s;
-  transition: width 0.2s;*/
-}
+  transition: width 0.2s;
+}*/
 /* 
 nav.scrolled li {
   float: none;
@@ -62,7 +67,7 @@ nav ul, nav label {
 nav ul {
   /*width: inherit;
   height: 2.5em;*/
-  padding: 1em 1em;
+  padding: .5em;
   border: 1px solid yellow;
   margin: 0;
 }
@@ -85,6 +90,9 @@ nav li {
   -o-transition: padding 0.2s;
   transition: padding 0.2s;
 }
+nav li.selected > a {
+  background-color: red;
+}
 nav a {
   display: block;
   width: 100%;
@@ -92,6 +100,25 @@ nav a {
 }
 #main-container {
   padding: 0 3em;
+}
+
+/* ----------- Comment box ----------- */
+div.commentBox div.comment > h4 {
+  margin: .5em 0;
+}
+div.commentBox div.comment > span {
+  margin-left: 1em;
+  font-style: italic;
+}
+div.commentForm {
+  margin: 1em;
+}
+div.commentForm input {
+  margin: 0 .5em .5em 0;
+}
+div.commentForm input:last-child {
+  display: block;
+  margin: .5em 0;
 }
 
 /* ----------- Non-mobile ----------- */
@@ -106,7 +133,6 @@ nav a {
   }
   nav li.selected > a {
     padding-top: 1em;
-    background-color: red;
   }
   nav li:hover > a {
     padding-top: 1em;
