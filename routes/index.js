@@ -1,6 +1,5 @@
 var express = require('express');
 var NavItem = require('../models/navitem.js');
-var Content = require('../models/content.js');
 var router = express.Router();
 
 /* GET home page. */
@@ -9,11 +8,11 @@ router.get('/:nav?', function(req, res, next) {
     env: req.app.get('env')
   };
 
-  //JKJconsole.log(vm);
+  //console.log(vm);
 
   var navdata;
 
-  NavItem.find({}, function(err, navitems){
+  NavItem.find({}, function(err, navitems) {
     //console.log(navitems);
     var navurl = req.params.nav || 'home';
     var navfilter = navitems.filter(function(obj) {return obj.navurl == navurl});
@@ -34,7 +33,7 @@ router.get('/:nav?', function(req, res, next) {
       //console.log(navdata);
 
       if (Object.getOwnPropertyNames(navdata).length > 0) {
-        console.log(Object.getOwnPropertyNames(navdata));
+        //console.log(Object.getOwnPropertyNames(navdata));
         Object.getOwnPropertyNames(navdata).forEach(function(e, i) {
           //console.log(e);
           vm[e] = navdata[e];

@@ -1,72 +1,64 @@
 $(document).ready(function() {
   React.render(
-      React.createElement(CommentBox, {url: "api/comment"}), //pollInterval={2000}
-      document.getElementById('comment-box')
+      React.createElement(ContentBox, {url: "api/content"}), //pollInterval={2000}
+      document.getElementById('main-content')
       );
 });
-//
-//var CommentBox = React.createClass({displayName: 'CommentBox',
-//	loadCommentsFromServer: function() {
-//		$.ajax({
-//			url: this.props.url,
-//			dataType: 'json',
-//			success: function(data) {
-//				this.setState({data: data});
-//			}.bind(this),
-//			error: function(xhr, status, err) {
-//				console.error(this.props.url, status, err.toString());
-//			}.bind(this)
-//		});
-//	},
-//	handleCommentSubmit: function(comment) {
-//		var comments = this.state.data;
-//		var newComments = comments.concat([comment]);
-//		this.setState({data: newComments});
-//		$.ajax({
-//			url: this.props.url,
-//			dataType: 'json',
-//			type: 'POST',
-//			data: comment,
-//			success: function(response) {
-//				this.setState({data: response});
-//			}.bind(this),
-//			error: function(xhr, status, err) {
-//				console.error(this.props.url, status, err.toString());
-//			}.bind(this)
-//		});
-//	},	
-//	getInitialState: function() {
-//		return {data: []};
-//	}, 
-//	componentDidMount: function() {
-//		this.loadCommentsFromServer();
-//		// setInterval(this.loadCommentsFromServer,this.props.pollInterval);
-//	},
-//	render: function() {
-//		return (
-//		<div className="commentBox">
-//			<h3>Comments</h3>
-//			<CommentForm onCommentSubmit={this.handleCommentSubmit} />
-//			<CommentList data={this.state.data} />
-//		</div>
-//		);
-//	}
-//});
-//
-//var CommentList = React.createClass({displayName: 'CommentList',
-//	render: function() {
-//		var commentNodes = this.props.data.map(function(comment) {
-//			 return (
-//				<Comment author={comment.author}>
-//					{comment.text}
-//				</Comment>	
-//			);
-//		});
-//		return (
-//		<div className="commentList">{commentNodes}</div>
-//		);
-//	}
-//});
+
+var ContentBox = React.createClass({displayName: 'ContentBox',
+  loadContentFromServer: function() {
+  	$.ajax({
+  		url: this.props.url,
+  		dataType: 'json',
+  		success: function(data) {
+  			this.setState({data: data});
+  		}.bind(this),
+  		error: function(xhr, status, err) {
+  			console.error(this.props.url, status, err.toString());
+  		}.bind(this)
+  	});
+  },
+  getInitialState: function() {
+  	return {data: []};
+  }, 
+  componentDidMount: function() {
+  	this.loadContentFromServer();
+  	// setInterval(this.loadCommentsFromServer,this.props.pollInterval);
+  },
+  render: function() {
+    return (
+        React.createElement(ContentWrapper, {data: this.state.data})
+
+        //<div className="content-wrapper">
+        //  <div id="center-content">
+        //  </div>
+        //  <div id="left-content">
+        //  </div>
+        //  <div id="right-content">
+        //  </div>
+        //</div>
+        );
+  }
+});
+
+//<h3>Comments</h3>
+//<CommentForm onCommentSubmit={this.handleCommentSubmit} />
+//<CommentList data={this.state.data} />
+
+var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
+	render: function() {
+		var contentNodes = this.props.data.map(function(content) {
+			 return (
+				React.createElement(Content, {identifier: content.id}, 
+					content.text
+				)	
+			);
+		});
+		return (
+		React.createElement("div", {className: "content-wrapper"}, contentNodes)
+		);
+	}
+});
 //
 //var CommentForm = React.createClass({displayName: 'CommentForm',
 // 	 handleSubmit: function(e) {
@@ -94,14 +86,11 @@ $(document).ready(function() {
 //});
 
 var Content = React.createClass({displayName: 'Content',
-	render: function() { 
-		return (
-		React.createElement("div", {className: "page-content"}, 
-			"//", React.createElement("h4", {className: "author"}, 
-			"//", this.props.author, 
-			"//"), 
-			"//", React.createElement("span", null, this.props.children.toString())
-		)
-		);
-	}
+  render: function() { 
+    return (
+        React.createElement("div", {id: this.props.identifier}, 
+          React.createElement("p", null, this.props.children.toString())
+        )
+        );
+  }
 });

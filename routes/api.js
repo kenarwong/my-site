@@ -1,5 +1,6 @@
 var express = require('express');
 var Comment = require('../models/comment.js');
+var Content = require('../models/content.js');
 var router = express.Router();
 var fs = require('fs');
 
@@ -40,6 +41,13 @@ router.post('/comment', function(req, res) {
 	  console.log(data);
 	  console.log('saved comment, author: ' + comment.author + ', text: ' + comment.text);
 	})
+});
+
+router.get('/content', function(req, res) {
+	Content.find({}).sort('order').exec(function(err,results){
+    //console.log(results);
+    res.json(results);
+  });
 });
 
 module.exports = router
