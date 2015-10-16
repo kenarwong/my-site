@@ -1,5 +1,6 @@
 var express = require('express');
 var NavItem = require('../models/navitem.js');
+var Content = require('../models/content.js');
 var router = express.Router();
 
 /* GET home page. */
@@ -10,17 +11,33 @@ router.get('/:nav?', function(req, res, next) {
 
   //console.log(vm);
 
+  // Querybuilder for nav and content
   var navqry = NavItem.find({}).exec();
+  var contentqry = Content.find({});
 
+  // dummy finalize cb fnc
   navqry.addBack(function(){
     console.log('nav query complete');
   });
 
+  //// dummy finalize cb fnc
+  //contentqry.addBack(function(){
+  //  console.log('content query complete');
+  //});
+
+  // dummy error cb fnc
   navqry.addErrback(function() {
-    console.log('uncaught error');
+    console.log('uncaught error in nav query');
     //return {httpcode: 500};
   });
 
+  //// dummy error cb fnc
+  //contentqry.addErrback(function() {
+  //  console.log('uncaught error in content query');
+  //  //return {httpcode: 500};
+  //});
+
+  // nav promise formatting fnc
   navqry.then(function(navitems) {
     var navdata;
 
@@ -42,6 +59,10 @@ router.get('/:nav?', function(req, res, next) {
 
       if (Object.getOwnPropertyNames(navdata).length > 0) {
         //console.log(Object.getOwnPropertyNames(navdata));
+
+        //console.log('break1');
+        contentqry.find({'navurl': navurl}).exec();
+        //console.log('break2');
         return {httpcode: 200, navdata: navdata};
 
       } else {
@@ -49,23 +70,45 @@ router.get('/:nav?', function(req, res, next) {
         return {httpcode: 404};
       }
     }
-  }).then(function(data) {
-    if (data.httpcode == 200){
+  }).then(function(navresults) { // nav promise rendering fnc
+    if (navresults.httpcode == 200){
       //console.log(vm);
-      Object.getOwnPropertyNames(data.navdata).forEach(function(e, i) {
+      Object.getOwnPropertyNames(navresults.navdata).forEach(function(e, i) {
         //console.log(e);
-        vm[e] = data.navdata[e];
+        vm[e] = navresults.navdata[e];
       });
 
-      //console.log(req.app.get('env'));
-      res.render('index', vm
-          //{ 
-          //  title: friendlyname,
-          //  thisurl: navfilter[0].navurl,
-          //  navitems: navitems,
-          //}
-          );
-    } else if (data.httpcode == 404) {
+      // content promise rendering fnc
+      contentqry.then(function(contentresults) {
+        //console.log(req.app.get('env'));
+        var contentdata = {};
+        contentresults.map(function(obj){
+          contentdata[obj.id] = obj.text;
+        });
+
+          //center-content: contentresults.filter(function(obj){return obj.id == 'center-content'}),
+          //left-content: contentresults.filter(function(obj){return obj.id == 'left-content'}),
+          //right-content: contentresults.filter(function(obj){return obj.id == 'right-content'})
+
+        console.log(contentdata);
+
+        //Object.getOwnPropertyNames(contentdata).forEach(function(e, i) {
+        //  //console.log(e);
+        //  vm[e] = contentdata[e];
+        //});
+        vm.contentdata = contentdata;
+        console.log(vm);
+
+        res.render('index', vm
+            //{ 
+            //  title: friendlyname,
+            //  thisurl: navfilter[0].navurl,
+            //  navitems: navitems,
+            //}
+            );
+      });
+
+    } else if (navresults.httpcode == 404) {
       res.status(404).render('error', {
         message: 'Not found',
         error: {}

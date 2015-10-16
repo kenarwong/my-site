@@ -56,6 +56,27 @@
         <div class="main wrapper clearfix">
           <h1><%= title %></h1>
           <div id="main-content">
+            <% if(contentdata.hasOwnProperty('center-content')) {%>
+              <div id="center-content">
+                <p> 
+                  <%= contentdata['center-content']%>
+                </p>
+              </div>
+            <% } %>
+            <% if(contentdata.hasOwnProperty('left-content')) {%>
+              <div id="left-content">
+                <p> 
+                  <%= contentdata['left-content'] %>
+                </p>
+              </div>
+            <% } %>
+            <% if(contentdata.hasOwnProperty('right-content')) {%>
+              <div id="right-content">
+                <p> 
+                  <%= contentdata['right-content'] %>
+                </p>
+              </div>
+            <% } %>
           </div>
           <hr>
         </div>
