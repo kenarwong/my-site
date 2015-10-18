@@ -79,6 +79,11 @@
             <% } %>
           </div>
           <hr>
+            <% if(contentdata.hasOwnProperty('react-partial')) {%>
+              <div id="test-content">
+                <%- contentdata['react-partial'] %>
+              </div>
+            <% } %>
         </div>
         <div id="comment-box"></div>
       </div>
@@ -91,7 +96,7 @@
       <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
       <% if(env === "development") { %>
         <script src="/build/js/init.js"></script>
-        <script src="/build/js/contentSection.js"></script>
+        <!--<script src="/build/js/contentSection.js"></script>-->
         <script src="/build/js/commentSection.js"></script>
       <% } else if (env === "production") { %>
         <script src="/build/main.js"></script>

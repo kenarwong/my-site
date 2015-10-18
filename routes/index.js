@@ -1,4 +1,7 @@
 var express = require('express');
+var React = require('react/addons');
+var ReactPartial = React.createFactory(require('../partials/contentSection.js').ReactPartial);
+
 var NavItem = require('../models/navitem.js');
 var Content = require('../models/content.js');
 var router = express.Router();
@@ -90,14 +93,20 @@ router.get('/:nav?', function(req, res, next) {
           //left-content: contentresults.filter(function(obj){return obj.id == 'left-content'}),
           //right-content: contentresults.filter(function(obj){return obj.id == 'right-content'})
 
-        console.log(contentdata);
+        //console.log(contentdata);
 
         //Object.getOwnPropertyNames(contentdata).forEach(function(e, i) {
         //  //console.log(e);
         //  vm[e] = contentdata[e];
         //});
+
+        var reactHtml = React.renderToString(ReactPartial({}));
+        //console.log(reactHtml);
+        contentdata['react-partial'] = reactHtml;
+
         vm.contentdata = contentdata;
-        console.log(vm);
+        //console.log(vm);
+
 
         res.render('index', vm
             //{ 

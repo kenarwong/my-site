@@ -43,11 +43,12 @@ router.post('/comment', function(req, res) {
 	})
 });
 
-router.get('/content', function(req, res) {
-	Content.find({}).sort('order').exec(function(err,results){
-    //console.log(results);
-    res.json(results);
-  });
-});
+//router.get('/content/:navurl?', function(req, res) {
+//  var navurl = req.params.navurl || "home";
+//	Content.find({navurl:navurl}).sort('order').exec(function(err,results){
+//    //console.log(results);
+//    res.json(results);
+//  });
+//});
 
-module.exports = router
+module.exports = router;

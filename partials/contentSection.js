@@ -1,33 +1,39 @@
+
+var React = require('react/addons');
+//var Content = require('../models/content.js');
+
 //var ContentData = function(){
 //  this.get = function() {
 //    return this.data;
 //  }
 //}
 
-var Content = require('../models/content.js');
-
-$(document).ready(function() {
-  React.render(
-      React.createElement(ContentBox, {url: "api/content"}), //pollInterval={2000}
-      document.getElementById('test-content')
-      );
-});
+//$(document).ready(function() {
+//  React.render(
+//      <ContentBox url="api/content" /> //pollInterval={2000}
+//      //document.getElementById('test-content')
+//      );
+//});
 
 var ContentBox = React.createClass({displayName: 'ContentBox',
-  loadContentFromServer: function() {
-  	$.ajax({
-  		url: this.props.url,
-  		dataType: 'json',
-  		success: function(data) {
-  			this.setState({data: data});
-  		}.bind(this),
-  		error: function(xhr, status, err) {
-  			console.error(this.props.url, status, err.toString());
-  		}.bind(this)
-  	});
-  },
+  //loadContentFromServer: function() {
+  //	$.ajax({
+  //		url: this.props.url,
+  //		dataType: 'json',
+  //		success: function(data) {
+  //			this.setState({data: data});
+  //		}.bind(this),
+  //		error: function(xhr, status, err) {
+  //			console.error(this.props.url, status, err.toString());
+  //		}.bind(this)
+  //	});
+  //},
   getInitialState: function() {
-  	return {data: [{id:"test",text:"test content"}]};
+    //console.log(Content);
+    //Content.find({}, function(err,results){
+    //  console.log(results);
+    //});
+    return {data: [{id:"test",text:"test content"}]};
   }, 
   //componentDidMount: function() {
   //	this.loadContentFromServer();
@@ -102,3 +108,5 @@ var Content = React.createClass({displayName: 'Content',
         );
   }
 });
+
+module.exports.ReactPartial = ContentBox;
