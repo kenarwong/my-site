@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     // 1. All configuration goes here 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['public/build/', 'partials/', 'dev/js/min/'],
+        clean: ['public/build/', 'dev/js/min/'],
         concat: {
             lib: {
                 src: [
@@ -51,26 +51,26 @@ module.exports = function(grunt) {
             expand: true
           }
         },
-        react: {
-          jsx: {
-            files: [
-              {
-                expand: true,
-                cwd: 'dev/jsx',
-                src: [ '**/*' ],
-                dest: 'dev/js',
-                ext: '.js'
-              },
-              {
-                expand: true,
-                cwd: 'react-partials/',
-                src: [ '**/*' ],
-                dest: 'partials/',
-                ext: '.js'
-              }
-            ]
-          }
-        },
+        //react: {
+        //  jsx: {
+        //    files: [
+        //      {
+        //        expand: true,
+        //        cwd: 'dev/jsx',
+        //        src: [ '**/*' ],
+        //        dest: 'dev/js',
+        //        ext: '.js'
+        //      },
+        //      {
+        //        expand: true,
+        //        cwd: 'react-partials/',
+        //        src: [ '**/*' ],
+        //        dest: 'partials/',
+        //        ext: '.js'
+        //      }
+        //    ]
+        //  }
+        //},
         uglify: {
           target: {
             options: {
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['clean','concat','copy:jquerymap']);
     grunt.registerTask('reset', ['clean']);
-    grunt.registerTask('prod', ['clean','react','uglify','concat','copy:jquerymap','copy:fonts']);
-    grunt.registerTask('dev', ['clean','react','copy:devfiles']);
+    grunt.registerTask('prod', ['clean',,'uglify','concat','copy:jquerymap','copy:fonts']);
+    grunt.registerTask('dev', ['clean','copy:devfiles']);
 
 };

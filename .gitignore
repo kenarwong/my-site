@@ -5,4 +5,5 @@
 *.swp
 
 # Deployment files
+node_modules/
 public/build/*
