@@ -19,6 +19,8 @@
 
         <link rel='stylesheet' href='/build/css/normalize.css' />
         <link rel='stylesheet' href='/build/css/style.css' />
+        <link rel='stylesheet' href='build/css/wire.css' />
+        <link rel='stylesheet' href='build/css/dev.css' />
 
         <script src="/build/js/libs/react.min.js"></script>
         <script src="/build/js/libs/jquery.min.js"></script>
@@ -49,43 +51,53 @@
               </a>
             </li>
             <% } %>
+            <% if(env === "development") { %>
+            <li class="dev">
+              <a>Dev</a>
+              <ul>
+                  <li class="selected"><a>Wire</a></li>
+              </ul>
+            </li>
+            <% } %>
           </ul>
         </nav>
       </header>
-      <div id="main-container">
-        <div class="main wrapper clearfix">
-          <h1><%= title %></h1>
-          <div id="main-content" class="clearfix">
-            <% if(contentdata.hasOwnProperty('center-content')) {%>
-              <div id="center-content">
-                <p> 
-                  <%= contentdata['center-content']%>
-                </p>
-              </div>
-            <% } %>
-            <% if(contentdata.hasOwnProperty('left-content')) {%>
-              <div id="left-content">
-                <p> 
-                  <%= contentdata['left-content'] %>
-                </p>
-              </div>
-            <% } %>
-            <% if(contentdata.hasOwnProperty('right-content')) {%>
-              <div id="right-content">
-                <p> 
-                  <%= contentdata['right-content'] %>
-                </p>
-              </div>
-            <% } %>
+      <div id="page-container">
+        <div id="main-container">
+          <div class="main wrapper clearfix">
+            <h1><%= title %></h1>
+            <div id="main-content" class="clearfix">
+              <% if(contentdata.hasOwnProperty('center-content')) {%>
+                <div id="center-content">
+                  <p> 
+                    <%= contentdata['center-content']%>
+                  </p>
+                </div>
+              <% } %>
+              <% if(contentdata.hasOwnProperty('left-content')) {%>
+                <div id="left-content">
+                  <p> 
+                    <%= contentdata['left-content'] %>
+                  </p>
+                </div>
+              <% } %>
+              <% if(contentdata.hasOwnProperty('right-content')) {%>
+                <div id="right-content">
+                  <p> 
+                    <%= contentdata['right-content'] %>
+                  </p>
+                </div>
+              <% } %>
+            </div>
+            <hr>
+              <% if(contentdata.hasOwnProperty('react-partial')) {%>
+                <div id="test-content">
+                  <%- contentdata['react-partial'] %>
+                </div>
+              <% } %>
           </div>
-          <hr>
-            <% if(contentdata.hasOwnProperty('react-partial')) {%>
-              <div id="test-content">
-                <%- contentdata['react-partial'] %>
-              </div>
-            <% } %>
+          <div id="comment-box"></div>
         </div>
-        <div id="comment-box"></div>
       </div>
       <div class="footer-container">
         <footer class="wrapper">

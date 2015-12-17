@@ -13,4 +13,10 @@
 
 $(document).ready(function(e){
   $('#nav-placeholder').css('height',$('nav').height());
+
+  // Dev
+  $(document).on('click','li.dev li',function(){
+      $(this).toggleClass('selected', !$(this).hasClass('selected'));
+      document.styleSheets[2].disabled = !$(this).hasClass('selected');
+  });
 });

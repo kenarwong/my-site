@@ -26,7 +26,6 @@ nav {
   /*margin: 1em;
   padding-left: 4em;
   text-align: center;*/
-  border: 1px solid black;
 
   /*-webkit-transition: width 0.2s;
   -moz-transition: width 0.2s;
@@ -35,8 +34,10 @@ nav {
 
   position: fixed;
   top: 0;
-  background-color: white;
-  opacity: .9;
+  z-index: 1000;
+  opacity: .9;     
+  border-bottom: 1px solid #e1e8ed;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
 }
 /*nav.scrolled {
   position: fixed;
@@ -68,7 +69,6 @@ nav ul {
   /*width: inherit;
   height: 2.5em;*/
   padding: .5em;
-  border: 1px solid yellow;
   margin: 0;
 }
   /*nav {
@@ -82,40 +82,31 @@ nav li {
   float: left;
   text-align: center;
   list-style: none;
-  border: 1px solid red;
-  
-  padding-top: 0;
-  -webkit-transition: padding 0.2s;
-  -moz-transition: padding 0.2s;
-  -o-transition: padding 0.2s;
-  transition: padding 0.2s;
-}
-nav li.selected > a {
-  background-color: red;
 }
 nav a {
   display: block;
   width: 100%;
-  border: 1px solid red;
+  cursor: pointer;
 }
+nav, footer {
+  background-color: #376F91;
+  color: #143447;
+}
+    
+/* ----------- Content ----------- */
 #main-container {
   padding: 0 3em;
 }
-
-/* ----------- Content ----------- */
 #center-content {
   padding: 1em;
   width: inherit;
   text-align: center;
-  border: 1px solid black;
 }
 #left-content {
   float: left;
-  border: 1px solid blue;
 }
 #right-content {
   float: right;
-  border: 1px solid orange;
 }
 #left-content, #right-content {
   padding: 1em;
@@ -144,23 +135,18 @@ div.commentForm input:last-child {
 
 /* ----------- Non-mobile ----------- */
 
-@media screen and (min-width: 44em) {
+@media screen and (min-width: 960px) {
+  #main-container {
+      max-width: 1190px;
+    margin: 0 auto;
+  }
+  nav li {
+    padding: 0 1em;
+  }
   nav li > a {
-    padding-top: 0;
-    -webkit-transition: padding 0.2s;
-    -moz-transition: padding 0.2s;
-    -o-transition: padding 0.2s;
-    transition: padding 0.2s;
   }
-  nav li.selected > a {
-    padding-top: 1em;
-  }
-  nav li:hover > a {
-    padding-top: 1em;
-    -webkit-transition: padding 0.2s;
-    -moz-transition: padding 0.2s;
-    -o-transition: padding 0.2s;
-    transition: padding 0.2s;
+  nav li.selected > a, nav li:hover > a {
+    color: #6BB2DE;
   }
 }
 /* ----------- Mobile ----------- */
@@ -190,18 +176,19 @@ div.commentForm input:last-child {
   }
 } */
 
-  @media screen and (max-width: 44em) {
+  @media screen and (max-width: 960px) {
     nav[role='full-horizontal'] ul > li {
       width: 100%;
     }
     nav label {
+      color: white;
+      text-shadow: -1px 0 #143447, 0 1px #143447, 1px 0 #143447, 0 -1px #143447;
+
       text-align: center;
       padding: .5em 0;
       width: inherit;
       display: block;
       cursor: pointer;
-
-      border: 1px solid red;
     }
     nav ul {
       padding: 0 1em;
@@ -214,15 +201,15 @@ div.commentForm input:last-child {
       -o-transition: opacity 0.2s;
       transition: opacity 0.2s;
     }
-    nav input[type="checkbox"] + ul li {
+    nav input[type="checkbox"] + ul > li {
       /*display: none;*/
       /*visibility: hidden;
       opacity: 0;*/
-      height: 0;
-      -webkit-transition: height 0.2s;
-      -moz-transition: height 0.2s;
-      -o-transition: height 0.2s;
-      transition: height 0.2s;
+      max-height: 0;
+      -webkit-transition: max-height 0.2s;
+      -moz-transition: max-height 0.2s;
+      -o-transition: max-height 0.2s;
+      transition: max-height 0.2s;
     }
     nav input[type="checkbox"] + ul > li > a {
       display: none;
@@ -243,13 +230,19 @@ div.commentForm input:last-child {
       /*display: block;*/
       /*visibility: visible;
       opacity: 1;*/
-      height: 1.5em;
-      -webkit-transition: height 0.2s;
-      -moz-transition: height 0.2s;
-      -o-transition: height 0.2s;
-      transition: height 0.2s;
+      max-height: 25em;
+      -webkit-transition: max-height 0.2s;
+      -moz-transition: max-height 0.2s;
+      -o-transition: max-height 0.2s;
+      transition: max-height 0.2s;
     }
     nav input[type="checkbox"]:checked + ul > li > a {
       display: block;
+    }
+    nav li.selected, nav li:hover {
+      background-color: #143447;
+    }
+    nav li.selected > a, nav li:hover > a {
+      color: white;
     }
   }

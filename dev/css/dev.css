@@ -1,0 +1,42 @@
+/* ------------- Nav ------------- */
+nav li.dev {
+    float: right;
+}
+nav li.dev ul {
+    padding: 0;
+}
+
+nav li.dev ul li.selected {
+}
+
+nav li.dev ul li {
+    overflow: hidden;
+    max-height: 0;
+
+    -webkit-transition: max-height 0.5s ease;
+    -moz-transition: max-height 0.5s ease;
+    -o-transition: max-height 0.5s ease;
+    transition: max-height 0.5s ease;
+}
+
+nav li.dev:hover ul li {
+    max-height:150px;
+
+    -webkit-transition: max-height 1s ease;
+    -moz-transition: max-height 1s ease;
+    -o-transition: max-height 1s ease;
+    transition: max-height 1s ease;
+}
+
+/* ----------- Non-mobile ----------- */
+
+@media screen and (min-width: 960px) {
+  nav li.dev li {
+      padding: 0;
+  }
+}
+
+/* ----------- Mobile ----------- */
+
+  @media screen and (max-width: 960px) {
+  }

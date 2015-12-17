@@ -1,0 +1,58 @@
+nav {
+  border: 1px solid black;
+}
+nav ul {
+  border: 1px solid yellow;
+}
+nav li {
+  border: 1px solid red;
+}
+nav li.selected > a {
+    color: red;
+}
+nav a {
+  border: 1px solid red;
+}
+
+nav, footer {
+  background-color: white;
+  color: black;
+}
+
+/* ----------- Content ----------- */
+#main-container {
+  border: 1px solid purple;
+}
+#center-content {
+  border: 1px solid black;
+}
+#left-content {
+  border: 1px solid blue;
+}
+#right-content {
+  border: 1px solid orange;
+}
+
+/* ----------- Non-mobile ----------- */
+
+@media screen and (min-width: 960px) {
+  nav li.selected > a, nav li:hover > a {
+    color: red;
+  }
+}
+
+/* ----------- Mobile ----------- */
+
+  @media screen and (max-width: 960px) {
+    nav label {
+      color: black;
+      text-shadow: 0px 0 black;
+      border: 1px solid red;
+    }
+    nav li.selected, nav li:hover {
+      background-color: red;
+    }
+    nav li.selected > a, nav li:hover > a {
+      color: white;
+    }
+  }
