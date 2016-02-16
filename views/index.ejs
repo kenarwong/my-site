@@ -19,8 +19,8 @@
 
         <link rel='stylesheet' href='/build/css/normalize.css' />
         <link rel='stylesheet' href='/build/css/style.css' />
-        <link rel='stylesheet' href='build/css/wire.css' />
-        <link rel='stylesheet' href='build/css/dev.css' />
+        <link rel='stylesheet' href='/build/css/wire.css' />
+        <link rel='stylesheet' href='/build/css/dev.css' />
 
         <script src="/build/js/libs/react.min.js"></script>
         <script src="/build/js/libs/jquery.min.js"></script>
@@ -55,7 +55,7 @@
             <li class="dev">
               <a>Dev</a>
               <ul>
-                  <li class="selected"><a>Wire</a></li>
+                  <li class=""><a>Wire</a></li>
               </ul>
             </li>
             <% } %>
@@ -107,6 +107,7 @@
 
       <!--<script src="/javascripts/landing.js"></script> type="text/jsx;harmony=true" -->
       <% if(env === "development") { %>
+        <script src="/build/js/util.js"></script>
         <script src="/build/js/init.js"></script>
         <!--<script src="/build/js/contentSection.js"></script>-->
         <script src="/build/js/commentSection.js"></script>
