@@ -33,7 +33,9 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
     //Content.find({}, function(err,results){
     //  console.log(results);
     //});
-    return {data: [{id:"test",text:"test content"}]};
+    //return {data: [{id:"test",text:"test content"}]};
+    //console.log(this.props.data);
+    return {data: this.props.data};
   }, 
   //componentDidMount: function() {
   //	this.loadContentFromServer();
