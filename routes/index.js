@@ -1,6 +1,5 @@
 var express = require('express');
 var React = require('react/addons');
-var ReactPartial = React.createFactory(require('../partials/contentSection.js').ReactPartial);
 
 var NavItem = require('../models/navitem.js');
 var Content = require('../models/content.js');
@@ -101,6 +100,7 @@ router.get('/:nav?', function(req, res, next) {
         //  vm[e] = contentdata[e];
         //});
 
+        var ReactPartial = React.createFactory(require('../partials/contentSection.js').ReactPartial);
         var reactHtml = React.renderToString(ReactPartial({data:contentresults}));
         //  id: 'test',
         //  text: 'test content testsadfasdfasdf'

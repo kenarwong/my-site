@@ -57,7 +57,7 @@ router.get('/content/:nav?', function(req, res, next) {
   var navurl = req.params.nav || 'home';
 
   // Querybuilder for content
-  var contentqry = Content.find({'navurl': navurl}).sort({"order":1}).exec();
+  var contentqry = Content.find({'navurl': navurl}).sort('order').exec();
 
   // dummy finalize cb fnc
   contentqry.addBack(function(){
