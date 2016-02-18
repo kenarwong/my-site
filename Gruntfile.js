@@ -80,7 +80,7 @@ module.exports = function(grunt) {
             files: [{
               expand: true,
               cwd: 'dev/js',
-              src: '*.js',
+              src: ['*.js','dev.js'], // Exclude dev.js
               dest: 'dev/js/min'
             }]
           }
@@ -97,7 +97,7 @@ module.exports = function(grunt) {
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['clean','concat','copy:jquerymap']);
     grunt.registerTask('reset', ['clean']);
-    grunt.registerTask('prod', ['clean',,'uglify','concat','copy:jquerymap','copy:fonts']);
+    grunt.registerTask('prod', ['clean','uglify','concat','copy:jquerymap','copy:fonts']);
     grunt.registerTask('dev', ['clean','copy:devfiles']);
 
 };
