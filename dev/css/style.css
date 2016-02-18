@@ -87,10 +87,22 @@ nav a {
   display: block;
   width: 100%;
   cursor: pointer;
+  text-decoration: none;
 }
+nav li.selected > a, nav li a:hover {
+  background-color: #143447;
+}
+nav li.selected > a, nav li:hover > a, nav a, nav a:visited {
+  color: white;
+}
+
 nav, footer {
   background-color: #376F91;
   color: #143447;
+}
+
+footer > h4 {
+  padding: .5em 0 .5em .5em;
 }
     
 /* ----------- Content ----------- */
@@ -137,16 +149,15 @@ div.commentForm input:last-child {
 
 @media screen and (min-width: 960px) {
   #main-container {
-      max-width: 1190px;
+    max-width: 1190px;
     margin: 0 auto;
   }
   nav li {
-    padding: 0 1em;
+    padding: 0 .5em;
   }
   nav li > a {
-  }
-  nav li.selected > a, nav li:hover > a {
-    color: #6BB2DE;
+    padding: .5em 1em;
+    box-sizing: border-box; 
   }
 }
 /* ----------- Mobile ----------- */
@@ -213,6 +224,12 @@ div.commentForm input:last-child {
     }
     nav input[type="checkbox"] + ul > li > a {
       display: none;
+
+      padding: 0;
+      -webkit-transition: padding 0.2s;
+      -moz-transition: padding 0.2s;
+      -o-transition: padding 0.2s;
+      transition: padding 0.2s;
     }
     nav input[type="checkbox"] + ul {
       /*height: 0;*/
@@ -238,11 +255,11 @@ div.commentForm input:last-child {
     }
     nav input[type="checkbox"]:checked + ul > li > a {
       display: block;
-    }
-    nav li.selected, nav li:hover {
-      background-color: #143447;
-    }
-    nav li.selected > a, nav li:hover > a {
-      color: white;
+
+      padding: .5em 0;
+      -webkit-transition: padding 0.2s;
+      -moz-transition: padding 0.2s;
+      -o-transition: padding 0.2s;
+      transition: padding 0.2s;
     }
   }
