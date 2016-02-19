@@ -1,5 +1,7 @@
+// If client-side, ignore require statement, otherwise
+// Supply react library for server-side rendering
+var React = React || require('react/addons');
 
-var React = require('react/addons');
 //var Content = require('../models/content.js');
 
 //var ContentData = function(){
@@ -111,4 +113,5 @@ var Content = React.createClass({displayName: 'Content',
   }
 });
 
-module.exports.ReactPartial = ContentBox;
+// If server-side rendering (module exists), then set export
+if (typeof module !== 'undefined') module.exports.ReactPartial = ContentBox;

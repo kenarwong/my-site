@@ -17,7 +17,8 @@ module.exports = function(grunt) {
             },
             main: {
                 src: [
-                    'dev/js/min/*.js'  // My files
+                    'dev/js/min/*.js',
+                    'dev/js/min/partials/*.js'
                     ],
                 dest: 'public/build/main.js',
             },
@@ -80,7 +81,7 @@ module.exports = function(grunt) {
             files: [{
               expand: true,
               cwd: 'dev/js',
-              src: ['*.js','dev.js'], // Exclude dev.js
+              src: ['**/*.js','!dev.js'], // Exclude dev.js
               dest: 'dev/js/min'
             }]
           }

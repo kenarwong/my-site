@@ -46,7 +46,8 @@
           <ul class="clearfix">
             <% for(var i=0; i<navitems.length; i++) {%>
             <li class="<%= navitems[i].navurl == thisurl ? 'selected' : '' %>">
-              <a href='<%= navitems[i].navurl %>'>
+              <!--<a href='<%= navitems[i].navurl %>'>-->
+              <a>
                 <%= navitems[i].friendlyname %>
               </a>
             </li>
@@ -85,8 +86,8 @@
         <script src="/build/js/util.js"></script>
         <script src="/build/js/init.js"></script>
         <script src="/build/js/dev.js"></script>
-        <!--<script src="/build/js/contentSection.js"></script>-->
-        <script src="/build/js/commentSection.js"></script>
+        <script src="/build/js/partials/contentSection.js"></script>
+        <script src="/build/js/partials/commentSection.js"></script>
       <% } else if (env === "production") { %>
         <script src="/build/main.js"></script>
       <% } else { %>

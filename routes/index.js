@@ -100,7 +100,7 @@ router.get('/:nav?', function(req, res, next) {
         //  vm[e] = contentdata[e];
         //});
 
-        var ReactPartial = React.createFactory(require('../partials/contentSection.js').ReactPartial);
+        var ReactPartial = React.createFactory(require('../dev/js/partials/contentSection.js').ReactPartial);
         var reactHtml = React.renderToString(ReactPartial({data:contentresults}));
         //  id: 'test',
         //  text: 'test content testsadfasdfasdf'
