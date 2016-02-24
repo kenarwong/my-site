@@ -98,7 +98,10 @@ router.get('/content/:nav?', function(req, res, next) {
       //console.log(reactHtml);
       //contentdata['react-partial'] = reactHtml;
 
-      res.json(contentresults);
+      res.json({
+        title: navurl, 
+        data: contentresults
+      });
     };
   });
 });

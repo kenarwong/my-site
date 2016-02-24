@@ -35,17 +35,19 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
     //Content.find({}, function(err,results){
     //  console.log(results);
     //});
-    //return {data: [{id:"test",text:"test content"}]};
-    //console.log(this.props.data);
-    return {data: this.props.data};
+    //console.log(this.props.title);
+    return {title: this.props.title, data: this.props.data};
   }, 
-  //componentDidMount: function() {
-  //	this.loadContentFromServer();
-  //	// setInterval(this.loadCommentsFromServer,this.props.pollInterval);
-  //},
+  componentDidMount: function() {
+  	//this.loadContentFromServer();
+  	// setInterval(this.loadCommentsFromServer,this.props.pollInterval);
+  },
   render: function() {
     return (
-        React.createElement(ContentWrapper, {data: this.state.data})
+        React.createElement("div", {ref: "content", className:"main wrapper clearfix"},
+          React.createElement("h1", null, this.state.title),
+          React.createElement(ContentWrapper, {data: this.state.data})
+          )
 
         //<div className="content-wrapper">
         //  <div id="center-content">
