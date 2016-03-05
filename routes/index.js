@@ -11,8 +11,6 @@ router.get('/:nav?', function(req, res, next) {
     env: req.app.get('env')
   };
 
-  //console.log(vm);
-
   // Querybuilder for nav and content
   var navqry = NavItem.find({}).exec();
   var contentqry = Content.find({});
@@ -22,16 +20,16 @@ router.get('/:nav?', function(req, res, next) {
     console.log('nav query complete');
   });
 
-  //// dummy finalize cb fnc
-  //contentqry.addBack(function(){
-  //  console.log('content query complete');
-  //});
-
   // dummy error cb fnc
   navqry.addErrback(function() {
     console.log('uncaught error in nav query');
     //return {httpcode: 500};
   });
+
+  //// dummy finalize cb fnc
+  //contentqry.addBack(function(){
+  //  console.log('content query complete');
+  //});
 
   //// dummy error cb fnc
   //contentqry.addErrback(function() {
@@ -57,14 +55,8 @@ router.get('/:nav?', function(req, res, next) {
         navitems: navitems
       };
 
-      //console.log(navdata);
-
       if (Object.getOwnPropertyNames(navdata).length > 0) {
-        //console.log(Object.getOwnPropertyNames(navdata));
-
-        //console.log('break1');
         contentqry.find({'navurl': navurl}).sort('order').exec();
-        //console.log('break2');
         return {httpcode: 200, navdata: navdata};
 
       } else {
@@ -74,32 +66,12 @@ router.get('/:nav?', function(req, res, next) {
     }
   }).then(function(navresults) { // nav promise rendering fnc
     if (navresults.httpcode == 200){
-      //console.log(vm);
       Object.getOwnPropertyNames(navresults.navdata).forEach(function(e, i) {
-        //console.log(e);
         vm[e] = navresults.navdata[e];
       });
 
       // content promise rendering fnc
       contentqry.then(function(contentresults) {
-        //console.log(req.app.get('env'));
-        //var contentdata = {};
-        //console.log(contentresults);
-        //contentresults.map(function(obj){
-        //  contentdata[obj.id] = obj.text;
-        //});
-
-          //center-content: contentresults.filter(function(obj){return obj.id == 'center-content'}),
-          //left-content: contentresults.filter(function(obj){return obj.id == 'left-content'}),
-          //right-content: contentresults.filter(function(obj){return obj.id == 'right-content'})
-
-        //console.log(contentdata);
-
-        //Object.getOwnPropertyNames(contentdata).forEach(function(e, i) {
-        //  //console.log(e);
-        //  vm[e] = contentdata[e];
-        //});
-
         var ReactPartial = React.createFactory(require('../dev/js/partials/contentSection.js').ReactPartial);
         var reactHtml = React.renderToString(
             ReactPartial({
@@ -107,14 +79,6 @@ router.get('/:nav?', function(req, res, next) {
               data: contentresults
             })
             );
-        //  id: 'test',
-        //  text: 'test content testsadfasdfasdf'
-        //}));
-        //console.log(reactHtml);
-        //contentdata['react-partial'] = reactHtml;
-
-        //vm.contentdata = contentdata;
-        //console.log(vm);
 
         vm.maincontent = reactHtml;
 

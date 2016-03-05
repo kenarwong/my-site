@@ -1,4 +1,5 @@
 var express = require('express');
+var NavItem = require('../models/navitem.js');
 var Comment = require('../models/comment.js');
 var Content = require('../models/content.js');
 var router = express.Router();
@@ -55,54 +56,64 @@ router.post('/comment', function(req, res) {
 /* GET home page. */
 router.get('/content/:nav?', function(req, res, next) {
   var navurl = req.params.nav || 'home';
+  //
+  // Querybuildier for nav
+  var navqry = NavItem.find({'navurl': navurl}).exec();
 
   // Querybuilder for content
   var contentqry = Content.find({'navurl': navurl}).sort('order').exec();
 
-  // dummy finalize cb fnc
-  contentqry.addBack(function(){
-    console.log('content query complete');
+    // dummy finalize cb fnc
+  navqry.addBack(function(){
+    console.log('nav query complete');
   });
 
   // dummy error cb fnc
-  contentqry.addErrback(function() {
-    console.log('uncaught error in content query');
+  navqry.addErrback(function() {
+    console.log('uncaught error in nav query');
+    //return {httpcode: 500};
   });
 
-  contentqry.then(function(contentresults) {
-    if (contentresults.length == 0) {
-      console.log('content not found: ' + navurl);
+  //// dummy finalize cb fnc
+  //contentqry.addBack(function(){
+  //  console.log('content query complete');
+  //});
 
-      res.status(404).render('error', {
-        message: 'Not found',
-        error: {}
-      });
-    } else {
-      //var contentdata = {};
-      //contentresults.map(function(obj){
-      //  contentdata[obj.id] = obj.text;
-      //});
+  //// dummy error cb fnc
+  //contentqry.addErrback(function() {
+  //  console.log('uncaught error in content query');
+  //  //return {httpcode: 500};
+  //});
 
-      //center-content: contentresults.filter(function(obj){return obj.id == 'center-content'}),
-      //left-content: contentresults.filter(function(obj){return obj.id == 'left-content'}),
-      //right-content: contentresults.filter(function(obj){return obj.id == 'right-content'})
+  navqry.then(function(navitems) {
+      navdata = {
+        title: navitems[0].friendlyname,
+        navitems: navitems
+      };
 
-      //console.log(contentdata);
+      if (Object.getOwnPropertyNames(navdata).length > 0) {
+        return {httpcode: 200, navdata: navdata};
+      } else {
+        console.log('navigation data error');
+        return {httpcode: 404};
+      }
 
-      //Object.getOwnPropertyNames(contentdata).forEach(function(e, i) {
-      //  //console.log(e);
-      //  vm[e] = contentdata[e];
-      //});
+  }).then(function(navresults) {
+    contentqry.then(function(contentresults) {
+      if (contentresults.length == 0) {
+        console.log('content not found: ' + navresults.navdata.title);
 
-      //var reactHtml = React.renderToString(ReactPartial({}));
-      //console.log(reactHtml);
-      //contentdata['react-partial'] = reactHtml;
-
-      res.json({
-        title: navurl, 
-        data: contentresults
-      });
-    };
+        res.status(404).render('error', {
+          message: 'Not found',
+          error: {}
+        });
+      } else {
+        res.json({
+          title: navresults.navdata.title, 
+          data: contentresults
+        });
+      };
+    });
   });
 });
 
