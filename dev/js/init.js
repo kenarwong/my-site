@@ -1,29 +1,28 @@
-//$(document).on("scroll", function(e) {
-//  if($('#main-container .main h1').length > 0){
-//    var yPos = $('#main-container .main h1').position()['top'];
-//    if ($(this).scrollTop() > yPos) {
-//      $('nav').addClass("scrolled");
-//      $('nav').css('top',$(document).scrollTop() + 'px');
-//    } else {
-//      $('nav').removeClass("scrolled");
-//      $('nav').css('top','0');
-//    }
-//  }
-//});
-
 $(document).ready(function(e){
   $('#nav-placeholder').css('height',$('nav').height());
 
   var updatePage = function(href) {
-    // Unmount old component, render new component
-    React.unmountComponentAtNode(document.getElementById('main-container'));
-    React.render(
-        React.createElement(ContentBox, {url: "api/content/" + href, data:[]}),
-        document.getElementById('main-container')
-        );
+
+    $('#main-container').css('height',$('#main-container').css('height')); // Retain height
+    $('#main-container').addClass('fadeOut').delay(500).queue(function(next){
+    var postExec = function() {
+      $('#main-container').css('height',''); // Remove height property
+      $('#main-container').removeClass('fadeOut'); // Remove height property
+    }
+
+      // Unmount old component, render new component
+      React.unmountComponentAtNode(document.getElementById('main-container'));
+      React.render(
+          React.createElement(ContentBox, {url: "api/content/" + href, data:[], postExec:postExec}),
+          document.getElementById('main-container')
+          );
+      next();
+    });
 
     // Handle css
-    $('li.content-link.selected').removeClass('selected');
+    var selected = $('li.content-link.selected');
+    selected.removeClass('selected');
+    selected[0].offsetWidth = selected[0].offsetWidth; // trigger reflow
     $('li.content-link > a[href="' + href + '"]').parent().addClass('selected');
   };
 

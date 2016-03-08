@@ -9,6 +9,7 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
       dataType: 'json',
       success: function(response) {
         this.setState({title: response.title, data: response.data});
+        this.props.postExec();
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());

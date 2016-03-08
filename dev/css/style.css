@@ -19,6 +19,8 @@ a {
 .clearfix {
   *zoom: 1;
 }
+
+/* ----------- Navigation/Footer ----------- */
 header {
 }
 nav {
@@ -96,6 +98,34 @@ nav li.selected > a, nav li:hover > a, nav a, nav a:visited {
   color: white;
 }
 
+@-webkit-keyframes clickFadeIn { 
+  0% { background-color: #000; }
+  100% { background-color: #143447; }
+}
+@-moz-keyframes clickFadeIn { 
+  0% { background-color: #000; }
+  100% { background-color: #143447; }
+}
+@-ms-keyframes clickFadeIn { 
+  0% { background-color: #000; }
+  100% { background-color: #143447; }
+}
+@-o-keyframes clickFadeIn { 
+  0% { background-color: #000; }
+  100% { background-color: #143447; }
+}
+@keyframes clickFadeIn {
+  0% { background-color: #000; }
+  100% { background-color: #143447; }
+}
+nav li.selected > a {
+  -webkit-animation: clickFadeIn .5s 0s 1 ease-in normal;
+  -moz-animation: clickFadeIn .5s 0s 1 ease-in normal;
+  -ms-animation: clickFadeIn .5s 0s 1 ease-in normal;
+  -o-animation: clickFadeIn .5s 0s 1 ease-in normal;
+  animation: clickFadeIn .5s 0s 1 ease-in normal;
+}
+
 nav, footer {
   background-color: #376F91;
   color: #143447;
@@ -124,6 +154,34 @@ footer > h4 {
   padding: 1em;
   width: 50%;
   box-sizing: border-box;
+}
+
+@-webkit-keyframes fadeOut { 
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-moz-keyframes fadeOut { 
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-ms-keyframes fadeOut { 
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@-o-keyframes fadeOut { 
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@keyframes fadeOut {
+  0% { opacity: 1; }
+  100% { opacity: 0; }
+}
+#main-container.fadeOut {
+  -webkit-animation: fadeOut .5s 0s 1 ease-out normal;
+  -moz-animation: fadeOut .5s 0s 1 ease-out normal;
+  -ms-animation: fadeOut .5s 0s 1 ease-out normal;
+  -o-animation: fadeOut .5s 0s 1 ease-out normal;
+  animation: fadeOut .5s 0s 1 ease-out normal;
 }
 
 /* ----------- Comment box ----------- */
@@ -160,6 +218,7 @@ div.commentForm input:last-child {
     box-sizing: border-box; 
   }
 }
+
 /* ----------- Mobile ----------- */
 
 /* @media only screen and (max-device-width: 480px) {
