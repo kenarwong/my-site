@@ -184,6 +184,10 @@ footer > h4 {
   animation: fadeOut .5s 0s 1 ease-out normal;
 }
 
+#main-container.fadedOut {
+  opacity: 0;
+}
+
 /* ----------- Comment box ----------- */
 div.commentBox div.comment > h4 {
   margin: .5em 0;

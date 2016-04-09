@@ -1,14 +1,21 @@
 $(document).ready(function(e){
-  $('#nav-placeholder').css('height',$('nav').height());
+  $('#nav-placeholder').css('height',$('nav').height()); // Set nav height
 
   var updatePage = function(href) {
 
     $('#main-container').css('height',$('#main-container').css('height')); // Retain height
-    $('#main-container').addClass('fadeOut').delay(500).queue(function(next){
-    var postExec = function() {
-      $('#main-container').css('height',''); // Remove height property
-      $('#main-container').removeClass('fadeOut'); // Remove height property
-    }
+
+    // Start css fadeOut animation
+    // Delay 500 ms
+    // Apply final transition state: fadedOut
+    $('#main-container').addClass('fadeOut').delay(500).addClass('fadedOut').queue(function(next){
+
+      // Post exec for after component is mounted
+      var postExec = function() {
+        $('#main-container').css('height',''); // Remove height property
+        $('#main-container').removeClass('fadeOut'); // Remove fadeOut class
+        $('#main-container').removeClass('fadedOut'); // Remove fadedOut class
+      }
 
       // Unmount old component, render new component
       React.unmountComponentAtNode(document.getElementById('main-container'));
@@ -45,4 +52,4 @@ $(document).ready(function(e){
 });
 
 (function() {
-})();
+)();
