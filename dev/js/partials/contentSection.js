@@ -25,7 +25,7 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
   render: function() {
     return (
         React.createElement("div", {ref: "content", className:"main wrapper clearfix"},
-          React.createElement("h1", null, this.state.title),
+          React.createElement("h1", {className: "content-header"}, this.state.title),
           React.createElement(ContentWrapper, {data: this.state.data})
           )
         );
@@ -50,7 +50,7 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 var Content = React.createClass({displayName: 'Content',
   render: function() { 
     return (
-        React.createElement("div", {id: this.props.identifier}, 
+        React.createElement("div", {id: this.props.identifier, className:"content-section"}, 
           React.createElement("p", null, this.props.children.toString())
         )
         );

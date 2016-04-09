@@ -176,7 +176,7 @@ footer > h4 {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
-#main-container.fadeOut {
+.fadeOut {
   -webkit-animation: fadeOut .5s 0s 1 ease-out normal;
   -moz-animation: fadeOut .5s 0s 1 ease-out normal;
   -ms-animation: fadeOut .5s 0s 1 ease-out normal;
@@ -184,7 +184,7 @@ footer > h4 {
   animation: fadeOut .5s 0s 1 ease-out normal;
 }
 
-#main-container.fadedOut {
+.fadedOut {
   opacity: 0;
 }
 
