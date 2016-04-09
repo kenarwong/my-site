@@ -176,12 +176,41 @@ footer > h4 {
   0% { opacity: 1; }
   100% { opacity: 0; }
 }
-.fadeOut {
+
+.fadeOut500 {
   -webkit-animation: fadeOut .5s 0s 1 ease-out normal;
   -moz-animation: fadeOut .5s 0s 1 ease-out normal;
   -ms-animation: fadeOut .5s 0s 1 ease-out normal;
   -o-animation: fadeOut .5s 0s 1 ease-out normal;
   animation: fadeOut .5s 0s 1 ease-out normal;
+}
+.fadeOut400 {
+  -webkit-animation: fadeOut .4s 0s 1 ease-out normal;
+  -moz-animation: fadeOut .4s 0s 1 ease-out normal;
+  -ms-animation: fadeOut .4s 0s 1 ease-out normal;
+  -o-animation: fadeOut .4s 0s 1 ease-out normal;
+  animation: fadeOut .4s 0s 1 ease-out normal;
+}
+.fadeOut300 {
+  -webkit-animation: fadeOut .3s 0s 1 linear normal;
+  -moz-animation: fadeOut .3s 0s 1 linear normal;
+  -ms-animation: fadeOut .3s 0s 1 linear normal;
+  -o-animation: fadeOut .3s 0s 1 linear normal;
+  animation: fadeOut .3s 0s 1 linear normal;
+}
+.fadeOut200 {
+  -webkit-animation: fadeOut .2s 0s 1 linear normal;
+  -moz-animation: fadeOut .2s 0s 1 linear normal;
+  -ms-animation: fadeOut .2s 0s 1 linear normal;
+  -o-animation: fadeOut .2s 0s 1 linear normal;
+  animation: fadeOut .2s 0s 1 linear normal;
+}
+.fadeOut100 {
+  -webkit-animation: fadeOut .1s 0s 1 linear normal;
+  -moz-animation: fadeOut .1s 0s 1 linear normal;
+  -ms-animation: fadeOut .1s 0s 1 linear normal;
+  -o-animation: fadeOut .1s 0s 1 linear normal;
+  animation: fadeOut .1s 0s 1 linear normal;
 }
 
 .fadedOut {
