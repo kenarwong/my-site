@@ -1,4 +1,15 @@
 $(document).ready(function(e){
+    // Disable menu switch when clicking outside of menu
+    $(document).on('click', function(event) {
+        if (!$(event.target).closest('#nav-menu').length &&
+            !($(event.target).is('#nav-menu')))
+            {
+                if ($('input#menu-switch').prop('checked')) {
+                    $('input#menu-switch').prop('checked',false);
+                }
+            }
+    });
+    
   $('#nav-placeholder').css('height',$('nav').height());
 
   var updatePage = function(href) {
@@ -50,6 +61,7 @@ $(document).ready(function(e){
         $('#main-container').css('height',''); // Remove height property
         $('#main-container .fadeOut').removeClass('fadeOut'); // Remove fadeOut class
         $('#main-container .fadedOut').removeClass('fadedOut'); // Remove fadedOut class
+        $('input#menu-switch').prop('checked',false); // Close menu if open
       }
 
       // Unmount old component, render new component
