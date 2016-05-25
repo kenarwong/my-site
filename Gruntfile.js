@@ -50,6 +50,12 @@ module.exports = function(grunt) {
             src: ['**/*','!**/jsx/**'],
             dest: 'public/build/',
             expand: true
+          },
+          imgs: {
+            cwd: 'dev/',
+            src: 'img/*',
+            dest: 'public/build/',
+            expand: true
           }
         },
         //react: {
@@ -98,7 +104,7 @@ module.exports = function(grunt) {
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['clean','concat','copy:jquerymap']);
     grunt.registerTask('reset', ['clean']);
-    grunt.registerTask('prod', ['clean','uglify','concat','copy:jquerymap','copy:fonts']);
+    grunt.registerTask('prod', ['clean','uglify','concat','copy:jquerymap','copy:fonts','copy:imgs']);
     grunt.registerTask('dev', ['clean','copy:devfiles']);
 
 };
