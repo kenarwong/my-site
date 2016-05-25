@@ -3,6 +3,8 @@ body {
   margin: 0;
   box-sizing: border-box;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/build/img/sayagata-400px.png');
+  background-repeat: repeat;
 }
 /*
 a {
