@@ -83,17 +83,23 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
     this.refs.author.getDOMNode().value = '';
     this.refs.text.getDOMNode().value = '';
   },
-  render: function() {
-    return (
-        React.createElement("div", {className: "commentForm"}, 
-        React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
-        React.createElement("input", {type: "text", placeholder: "Your name", ref: "author"}), 
-        React.createElement("input", {type: "text", placeholder: "Say something...", ref: "text"}), 
-        React.createElement("input", {type: "submit", value: "Post"})
-        )
-        )
-        );
-  }
+    render: function() {
+        return (
+            React.createElement("div", {className: "commentForm"}, 
+                React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
+                    React.createElement("span", {className: "input-span"}, 
+                        React.createElement("input", {type: "text", id: "comment-name", placeholder: "Your name", ref: "author", className: "balloon"}), 
+                        React.createElement("label", {htmlFor: "comment-name"},"Name")
+                        ),
+                    React.createElement("span", {className: "input-span"}, 
+                        React.createElement("input", {type: "text", id: "comment-text", placeholder: "Say something...", ref: "text", className: "balloon"}), 
+                        React.createElement("label", {htmlFor: "comment-text"},"Comment")
+                        ),
+                    React.createElement("input", {type: "submit", value: "Comment"})
+                    )
+                )
+            );
+    }
 });
 
 var Comment = React.createClass({displayName: 'Comment',
