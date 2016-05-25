@@ -1,6 +1,7 @@
 // If client-side, ignore require statement, otherwise
 // Supply react library for server-side rendering
-var React = React || require('react/addons');
+var React = React || require('react');
+//var ReactCSSTransitionGroup = require('react-addons-css-transition-group');
 
 var ContentBox = React.createClass({displayName: 'ContentBox',
   loadContentFromServer: function() {

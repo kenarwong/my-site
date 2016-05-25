@@ -20,7 +20,7 @@ $(document).ready(function(e){
         var totalDelay = 500; // total delay (ms) for page transition
 
         var preTransitionH = $('#main-container').height(); // record preTransitionH
-        //$('#main-container').height(preTransitionH); // Retain height
+        $('#main-container').height(preTransitionH); // Retain height
 
         // fadeOut fnc for sections
         var fadeOut = function(element,preDelay,delayTime) {
@@ -81,6 +81,7 @@ $(document).ready(function(e){
         $('#main-container').delay(totalDelay).queue(function(next){
             // Post execution functions
             var postExec = function() {
+                $('#main-container').height(''); // Remove height property prior to recording new content height
                 var postTransitionH = $('#main-container').height(); // Record new content height
                 $('#main-container').height(preTransitionH); // Retain preTransitionH height after new content loads
 

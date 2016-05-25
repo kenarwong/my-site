@@ -1,5 +1,7 @@
 var express = require('express');
-var React = require('react/addons');
+//var React = require('react/addons');
+var React = require('react');
+var ReactDOMServer = require('react-dom/server');
 
 var NavItem = require('../models/navitem.js');
 var Content = require('../models/content.js');
@@ -73,7 +75,7 @@ router.get('/:nav?', function(req, res, next) {
       // content promise rendering fnc
       contentqry.then(function(contentresults) {
         var ReactPartial = React.createFactory(require('../dev/js/partials/contentSection.js').ReactPartial);
-        var reactHtml = React.renderToString(
+        var reactHtml = ReactDOMServer.renderToString(
             ReactPartial({
               title: navresults.navdata.title,
               data: contentresults
