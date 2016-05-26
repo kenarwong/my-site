@@ -374,7 +374,10 @@ div.commentBox {
 div.commentBox div.comment > h4 {
   margin: .5em 0;
 }
-div.commentBox div.comment > span {
+div.commentBox div.comment > span.created {
+  margin-left: 1em;
+}
+div.commentBox div.comment > span.entry {
   margin-left: 1em;
   font-style: italic;
 }

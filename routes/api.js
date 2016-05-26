@@ -11,12 +11,15 @@ router.get('/', function(req, res) {
 });
 
 /* GET JSON data. */
-router.get('/comment', function(req, res) {
+router.get('/comment/:page?', function(req, res) {
   // fs.readFile('_data.json', function(err, data) {
   // 	res.setHeader('Content-Type', 'application/json');
   // 	res.send(data);
   // });
-  Comment.find({}, function(err,docs){
+  //
+  var page = page || 0;
+  var qry = Comment.find({}).sort({created: 1}).exec();
+  qry.then(function(docs){
     res.json(docs);
   });
 });
