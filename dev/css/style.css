@@ -142,49 +142,57 @@ footer > h4 {
 }
     
 /* ----------- Input Boxes ----------- */
-.input-span {
+.input-span, .submit-span {
     position: relative;
-    display: inline-block;
-    margin: 30px 10px;
+    display: block;
+    margin: 30px 0px;
+}
+
+.balloon#comment-name {
+    width: 300px;
+    text-indent: 60px; 
+}
+
+.balloon#comment-text {
+    width: 300px;
+    text-indent: 80px; 
 }
 
 .balloon {
     display: inline-block;
-    width: 215px;
     padding: 10px 0 10px 15px;
     font-family: "Open Sans", sans;
     font-weight: 400;
-    color: #377D6A;
-    background: #efefef;
+    color: #fff;
+    background: #97A9DE;
     border: 0;
     border-radius: 3px;
     outline: 0;
-    text-indent: 60px; 
     transition: all .3s ease-in-out;
 }
 
 .balloon::-webkit-input-placeholder {
-    color: #efefef;
+    color: #97A9DE;
     text-indent: 0;
     font-weight: 300;
 }
 .balloon:-moz-webkit-input-placeholder {
-    color: #efefef;
+    color: #97A9DE;
     text-indent: 0;
     font-weight: 300;
 }
 .balloon::-moz-webkit-input-placeholder {
-    color: #efefef;
+    color: #97A9DE;
     text-indent: 0;
     font-weight: 300;
 }
 .balloon:-ms-webkit-input-placeholder {
-    color: #efefef;
+    color: #97A9DE;
     text-indent: 0;
     font-weight: 300;
 }
 .balloon:-o-webkit-input-placeholder {
-    color: #efefef;
+    color: #97A9DE;
     text-indent: 0;
     font-weight: 300;
 }
@@ -196,7 +204,7 @@ footer > h4 {
     left: 0;
     /*bottom: 8px;*/
     padding: 5px 15px;
-    color: #032429;
+    color: #000;
     font-size: 11px;
     font-weight: 700;
     text-transform: uppercase;
@@ -221,8 +229,13 @@ footer > h4 {
 }
 
 .balloon:focus,
-.balloon:active {
-    color: #377D6A;
+.balloon:active,
+.balloon#comment-name:focus,
+.balloon#comment-name:active,
+.balloon#comment-text:focus,
+.balloon#comment-text:active
+{
+    color: #000;
     text-indent: 0;
     background: #fff;
 }
@@ -261,12 +274,12 @@ footer > h4 {
 .balloon:focus + label, .balloon:active + label {
     color: #fff;
     text-shadow: 0 1px 0 rgba(19,74,70,.4);
-    background: rgba(122,184,147,1);
+    background: rgba(112,125,165,1);
     transform: translateY(-40px);
 }
 
 .balloon:focus + label:after, .balloon:active + label:after {
-    border-top: 4px solid rgba(122,184,147,1);
+    border-top: 4px solid rgba(112,125,165,1);
 }
 
 /* ----------- Content ----------- */
@@ -366,14 +379,118 @@ div.commentBox div.comment > span {
   font-style: italic;
 }
 div.commentForm {
-  margin: 1em;
+  margin: 1em 0em;
 }
-div.commentForm input {
+/*div.commentForm input {
   margin: 0 .5em .5em 0;
-}
+}*/
 div.commentForm input:last-child {
   display: block;
 }
+div.commentForm textarea {
+    resize: none;
+}
+
+div.commentForm button[type="submit"] {
+    padding: 10px; 
+    font-family: "Open Sans", sans;
+    font-weight: 400;
+    border: 0;
+    border-radius: 3px;
+
+    position: relative;
+    display: inline-block;
+
+    transition: color 0.7s;
+}
+
+/*div.commentForm button[type="submit"]:active {
+    background: #000000;
+}*/
+
+/*div.commentForm button[type="submit"]::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin: -35px 0 0 -35px;
+    width: 70px;
+    height: 38px;
+    border-radius: 10%;
+
+    opacity: 0;
+    pointer-events: none;
+}
+
+div.commentForm button[type="submit"]:focus {
+    outline: none;
+}
+
+div.commentForm button[type="submit"]:active::after {
+    animation: expand-from-center 0.1s forwards;
+}
+
+@-webkit-keyframes expand-from-center {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    25%, 50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+@-moz-keyframes expand-from-center {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    25%, 50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+@-ms-keyframes expand-from-center {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    25%, 50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+@-o-keyframes expand-from-center {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    25%, 50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+@keyframes expand-from-center {
+    0% {
+        transform: scale3d(0.3, 0.3, 1);
+    }
+    25%, 50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: scale3d(1.2, 1.2, 1);
+    }
+}
+*/
 
 /* ----------- Non-mobile ----------- */
 

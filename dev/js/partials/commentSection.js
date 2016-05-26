@@ -48,7 +48,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
   render: function() {
     return (
         React.createElement("div", {className: "commentBox"}, 
-        React.createElement("h3", null, "Comments"), 
+        React.createElement("h3", null, "Leave Your Thoughts"), 
         React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
         React.createElement(CommentList, {data: this.state.data})
         )
@@ -88,14 +88,18 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
             React.createElement("div", {className: "commentForm"}, 
                 React.createElement("form", {className: "commentForm", onSubmit: this.handleSubmit}, 
                     React.createElement("span", {className: "input-span"}, 
-                        React.createElement("input", {type: "text", id: "comment-name", placeholder: "Your name", ref: "author", className: "balloon"}), 
+                        React.createElement("input", {type: "text", id: "comment-name", placeholder: "Your name", ref: "author", className: "balloon", maxlength: "100"}), 
                         React.createElement("label", {htmlFor: "comment-name"},"Name")
                         ),
                     React.createElement("span", {className: "input-span"}, 
-                        React.createElement("input", {type: "text", id: "comment-text", placeholder: "Say something...", ref: "text", className: "balloon"}), 
+                        React.createElement("textarea", {type: "text", id: "comment-text", placeholder: "Say something...", ref: "text", className: "balloon", rows: "5", maxlength: "250"}), 
                         React.createElement("label", {htmlFor: "comment-text"},"Comment")
                         ),
-                    React.createElement("input", {type: "submit", value: "Comment"})
+                    React.createElement("span", {className: "submit-span"}, 
+                        React.createElement("button", {type: "submit"},
+                            React.createElement("span", null, "Submit")
+                            )
+                        )
                     )
                 )
             );
