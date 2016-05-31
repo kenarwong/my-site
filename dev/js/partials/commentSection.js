@@ -115,13 +115,17 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
 
 var CommentPages = React.createClass({displayName: 'CommentPages',
     handlePageClick: function(e) {
-        this.props.onPagination(e.target.innerHTML);
+        this.props.onPagination(e.target.getAttribute("page"));
     },
     render: function() {
         var pageNodes = [];
-        for (var i = 0; i < this.props.pages; i++) {
-            pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick}, i+1));
+        // Pages label
+        pageNodes.push(React.createElement("span", {className: "commentsPageLabel"}, "Pages"));
+        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick}, "<<"));
+        for (var i = 1; i >= this.props.pages; i++) {
+            pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClicki}, i));
         }
+        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick}, ">>"));
         return(
             React.createElement("div", {className: "commentsPageWrapper"}, pageNodes)
         );
