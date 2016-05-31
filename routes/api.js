@@ -4,6 +4,7 @@ var Comment = require('../models/comment.js');
 var Content = require('../models/content.js');
 var router = express.Router();
 var fs = require('fs');
+var dateFormat = require('dateformat');
 
 /* Default */
 router.get('/', function(req, res) {
@@ -11,15 +12,22 @@ router.get('/', function(req, res) {
 });
 
 /* GET JSON data. */
-router.get('/comment/:page?', function(req, res) {
+router.get('/comment', function(req, res) {
   // fs.readFile('_data.json', function(err, data) {
   // 	res.setHeader('Content-Type', 'application/json');
   // 	res.send(data);
   // });
   //
-  var page = page || 0;
-  var qry = Comment.find({}).sort({created: 1}).exec();
+  //var page = page || 0;
+  var qry = Comment.find({}).sort({created: -1}).exec();
   qry.then(function(docs){
+      var docs = docs.map(function(comment) {
+          var formatted = dateFormat(comment.created, "mmm d, yyyy h:MM tt");
+          //console.log(formatted);
+          comment.created = formatted;
+          //console.log(comment);
+          return comment;
+      });
     res.json(docs);
   });
 });

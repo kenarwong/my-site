@@ -14,7 +14,7 @@ var mongoose = require('mongoose');
 var schema = new mongoose.Schema({
     author     : String
   , text       : String
-  , created    : Date
+  , created    : String // Converted server-side
 }, { collection: "comments" });
 
 var Comment = mongoose.model('Comment', schema);
