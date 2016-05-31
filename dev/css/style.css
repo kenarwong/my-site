@@ -502,7 +502,7 @@ div.commentForm button[type="submit"]:active::after {
 .commentsPage {
     padding: 4px;
     margin: 0 5px;
-    border: 1px solid;
+    //border: 1px solid;
     cursor: pointer;
 }
 
