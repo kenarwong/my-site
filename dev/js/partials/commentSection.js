@@ -6,15 +6,12 @@ $(document).ready(function() {
 });
 
 var CommentBox = React.createClass({displayName: 'CommentBox',
-    perPageCount: function() {
-        return 10;
-    },
-    loadCommentsFromServer: function(page) {
+    loadCommentsFromServer: function() {
         $.ajax({
             url: this.props.url,
         dataType: 'json',
         success: function(data) {
-            this.setState({data: data, page: page || 1});
+            this.setState({data: data});
         }.bind(this),
         error: function(xhr, status, err) {
             console.error(this.props.url, status, err.toString());
@@ -41,11 +38,8 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
             }.bind(this)
         });
     },	
-    handlePagination: function(page) {
-        this.loadCommentsFromServer(page);
-    },
     getInitialState: function() {
-        return {data: [], page: 1};
+        return {data: []};
     }, 
     componentDidMount: function() {
         this.loadCommentsFromServer();
@@ -56,8 +50,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
                 React.createElement("div", {className: "commentBox"}, 
                     React.createElement("h3", null, "Leave Your Thoughts"), 
                     React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
-                    React.createElement(CommentList, {data: this.state.data, page: this.state.page, perPageCount: this.perPageCount()}),
-                    React.createElement(CommentPages, {onPagination: this.handlePagination, pages: Math.ceil(this.state.data.length/this.perPageCount())})
+                    React.createElement(CommentList, {data: this.state.data})
                     )
                );
     }
@@ -65,7 +58,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 
 var CommentList = React.createClass({displayName: 'CommentList',
     render: function() {
-        var commentNodes = this.props.data.splice((this.props.page*this.props.perPageCount)-this.props.perPageCount, (this.props.page*this.props.perPageCount)).map(function(comment) {
+        var commentNodes = this.props.data.map(function(comment) {
             return (
                 React.createElement(Comment, {created: comment.created, author: comment.author}, 
                     comment.text
@@ -110,25 +103,6 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
                     )
                 )
             );
-    }
-});
-
-var CommentPages = React.createClass({displayName: 'CommentPages',
-    handlePageClick: function(e) {
-        this.props.onPagination(e.target.getAttribute("page"));
-    },
-    render: function() {
-        var pageNodes = [];
-        // Pages label
-        pageNodes.push(React.createElement("span", {className: "commentsPageLabel"}, "Pages"));
-        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick}, "<<"));
-        for (var i = 1; i >= this.props.pages; i++) {
-            pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClicki}, i));
-        }
-        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick}, ">>"));
-        return(
-            React.createElement("div", {className: "commentsPageWrapper"}, pageNodes)
-        );
     }
 });
 
