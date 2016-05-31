@@ -4,7 +4,7 @@ var Comment = require('../models/comment.js');
 var Content = require('../models/content.js');
 var router = express.Router();
 var fs = require('fs');
-var dateFormat = require('dateformat');
+//var dateFormat = require('dateformat');
 
 /* Default */
 router.get('/', function(req, res) {
@@ -21,13 +21,13 @@ router.get('/comment', function(req, res) {
   //var page = page || 0;
   var qry = Comment.find({}).sort({created: -1}).exec();
   qry.then(function(docs){
-      var docs = docs.map(function(comment) {
-          var formatted = dateFormat(comment.created, "mmm d, yyyy h:MM tt");
-          //console.log(formatted);
-          comment.created = formatted;
-          //console.log(comment);
-          return comment;
-      });
+      //var docs = docs.map(function(comment) {
+      //    var formatted = dateformat(comment.created, );
+      //    //console.log(formatted);
+      //    comment.created = formatted;
+      //    //console.log(comment);
+      //    return comment;
+      //});
     res.json(docs);
   });
 });
@@ -46,7 +46,8 @@ router.post('/comment', function(req, res) {
 
   var comment = new Comment({
     author: req.body.author,
-    text: req.body.text
+    text: req.body.text,
+    created: new Date()
   });
   comment.save(function (err, data) {
     if (err) return console.error(err);
