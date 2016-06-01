@@ -53,7 +53,11 @@ router.post('/comment', function(req, res) {
     if (err) return console.error(err);
     console.log(data);
     console.log('saved comment, author: ' + comment.author + ', text: ' + comment.text);
-  })
+
+    res.status(200);
+    res.send("comment saved!");
+  });
+
 });
 
 //router.get('/content/:navurl?', function(req, res) {

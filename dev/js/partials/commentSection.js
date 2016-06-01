@@ -30,14 +30,15 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 
         $.ajax({
             url: this.props.url,
-            dataType: 'json',
+            //dataType: 'json',
             type: 'POST',
             data: comment,
             success: function(response) {
                 //this.setState({data: response});
             }.bind(this),
             error: function(xhr, status, err) {
-                console.error(this.props.url, status, err.toString());
+                //console.error(this.props.url, status, err.toString());
+                console.log("Oops! An error occurred.");
             }.bind(this)
         });
     },	
@@ -145,7 +146,7 @@ var Comment = React.createClass({displayName: 'Comment',
                     this.props.author
                     ), 
                 React.createElement("span", {className: "created"}, 
-                    dateformat(this.props.created,"mmm d, yyyy h:mm tt")
+                    dateformat(this.props.created,"mmm d, yyyy h:MM tt")
                     ), 
                 React.createElement("span", {className: "entry"}, null, this.props.children.toString())
                 )
