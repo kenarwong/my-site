@@ -57,7 +57,7 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
                     React.createElement("h3", null, "Leave Your Thoughts"), 
                     React.createElement(CommentForm, {onCommentSubmit: this.handleCommentSubmit}), 
                     React.createElement(CommentList, {data: this.state.data, page: this.state.page, perPageCount: this.perPageCount()}),
-                    React.createElement(CommentPages, {onPagination: this.handlePagination, pages: Math.ceil(this.state.data.length/this.perPageCount())})
+                    React.createElement(CommentPages, {onPagination: this.handlePagination, pages: Math.ceil(this.state.data.length/this.perPageCount()), page: this.state.page})
                     )
                );
     }
@@ -65,7 +65,12 @@ var CommentBox = React.createClass({displayName: 'CommentBox',
 
 var CommentList = React.createClass({displayName: 'CommentList',
     render: function() {
-        var commentNodes = this.props.data.splice((this.props.page*this.props.perPageCount)-this.props.perPageCount, this.props.perPageCount).map(function(comment) {
+        var temp = this.props.data.constructor();
+        for (var key in this.props.data) {
+            temp[key] = this.props.data[key];
+        }
+
+        var commentNodes = temp.splice((this.props.page*this.props.perPageCount)-this.props.perPageCount, this.props.perPageCount).map(function(comment) {
             return (
                 React.createElement(Comment, {created: comment.created, author: comment.author}, 
                     comment.text
@@ -86,7 +91,7 @@ var CommentForm = React.createClass({displayName: 'CommentForm',
         if (!text || !author) {
             return;
         }
-        this.props.onCommentSubmit({author: author, text: text}); 
+        this.props.onCommentSubmit({author: author, text: text, created: new Date()}); 
         this.refs.author.getDOMNode().value = '';
         this.refs.text.getDOMNode().value = '';
     },
@@ -123,7 +128,7 @@ var CommentPages = React.createClass({displayName: 'CommentPages',
         //pageNodes.push(React.createElement("span", {className: "commentsPageLabel"}, "Pages"));
         pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,1)}, "<<"));
         for (var i = 1; i <= this.props.pages; i++) {
-            pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,i)}, i));
+            pageNodes.push(React.createElement("span", {className: "commentsPage" + (this.props.page == i ? " active" : ""), onClick: this.handlePageClick.bind(this,i)}, i));
         }
         pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,this.props.pages)}, ">>"));
         return(

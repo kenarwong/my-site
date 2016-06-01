@@ -24,6 +24,7 @@
     "serve-favicon": "^2.2.0"
   },
   "devDependencies": {
+    "express": "^4.13.4",
     "grunt-contrib-clean": "^1.0.0",
     "grunt-contrib-concat": "^1.0.1",
     "grunt-contrib-copy": "^1.0.0",

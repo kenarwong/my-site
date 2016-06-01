@@ -506,6 +506,11 @@ div.commentForm button[type="submit"]:active::after {
     cursor: pointer;
 }
 
+.commentsPage.active {
+    background: #97A9DE;
+    border-radius: 3px;
+}
+
 /* ----------- Non-mobile ----------- */
 
 @media screen and (min-width: 960px) {
