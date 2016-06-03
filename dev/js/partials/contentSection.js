@@ -42,7 +42,7 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
                 (content[i+1].id != "left-content" && content[i+1].id != "right-content") : // check to see if next content isn't left/right float
                 false) {
                     contentNodes.push(
-                        React.createElement(Content, {identifier: content[i].id}, 
+                        React.createElement(Content, {identifier: content[i].id, contentType: content[i].contentType}, 
                             content[i].text
                             )	
                         );
@@ -52,7 +52,7 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
                         );
                 } else {
                     contentNodes.push(
-                        React.createElement(Content, {identifier: content[i].id}, 
+                        React.createElement(Content, {identifier: content[i].id, contentType: content[i].contentType}, 
                             content[i].text
                             )	
                         );
@@ -65,13 +65,17 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 });
 
 var Content = React.createClass({displayName: 'Content',
-  render: function() { 
-    return (
-        React.createElement("div", {id: this.props.identifier, className:"content-section"}, 
-          React.createElement("p", null, this.props.children.toString())
-        )
-        );
-  }
+    basic: function(props) {
+        return React.createElement(props.type, props.attr, props.children);
+    },
+    render: function() { 
+        return (
+            React.createElement("div", {id: this.props.identifier, className:"content-section"}, 
+                // TODO: check if this contains contentType
+                this[this.props.contentType]({type: "p", attr: null, children: this.props.children.toString()}) // switch content
+                )
+            );
+    }
 });
 
 // If server-side rendering (module exists), then set export

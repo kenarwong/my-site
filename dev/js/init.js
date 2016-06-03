@@ -107,9 +107,8 @@ $(document).ready(function(e){
 
             // Unmount old component, render new component
             React.unmountComponentAtNode(document.getElementById('main-container')); // React unmount fnc
-            var reactElement = React.createElement(ContentBox, {url: "api/content/" + href, data:[], postExec:postExec});
             React.render(
-                reactElement,
+                React.createElement(ContentBox, {url: "api/content/" + href, data:[], postExec:postExec}),
                 document.getElementById('main-container')
                 ); // Mount new content from api
             next();
@@ -128,7 +127,11 @@ $(document).ready(function(e){
         // Prevent link click
         $('.content-link > a').addClass('disabled');
         var postClickFnc = function() {
+            // Re-enable link
             $('.content-link > a').removeClass('disabled');
+
+            // Change title
+            document.title = document.getElementsByTagName('h1')[0].innerHTML;
         };
 
         // TODO: fallback if libs fail
