@@ -12,11 +12,11 @@ var mongoose = require('mongoose');
 
 // Create a new schema for our tweet data
 var schema = new mongoose.Schema({
-    id          : String
-  , navurl      : String
-  , text        : String
-  , order       : String
-  , contentType : String
+    navurl          : String
+  , text            : String
+  , order           : String
+  , contentClass   : String
+  , contentType     : String
 }, { collection: "content" });
 
 var Content = mongoose.model('Content', schema);

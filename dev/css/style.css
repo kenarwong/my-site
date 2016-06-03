@@ -286,21 +286,26 @@ footer > h4 {
 #page-container {
   padding: 0 3em;
 }
-#center-content {
+#main-container .content-section {
   padding: 1em;
+  box-sizing: border-box;
+}
+#main-container .content-section + .content-section,
+#main-container .content-section + div.clearfix + .content-section {
+    padding-top: 0;
+}
+.center-content {
   width: inherit;
   text-align: center;
 }
-#left-content {
+.left-content {
   float: left;
 }
-#right-content {
+.right-content {
   float: right;
 }
-#left-content, #right-content {
-  padding: 1em;
+.left-content, .right-content {
   width: 50%;
-  box-sizing: border-box;
 }
 
 @-webkit-keyframes fadeOut { 
@@ -639,13 +644,8 @@ div.commentForm button[type="submit"]:active::after {
         text-align: center;
     }
     /* Full width all content */
-    #left-content {
+    .left-content, .right-content {
         float: none;
-    }
-    #right-content {
-        float: none;
-    }
-    #left-content, #right-content {
         width: inherit;
     }
   }
