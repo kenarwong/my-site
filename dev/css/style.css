@@ -555,6 +555,7 @@ div.commentForm button[type="submit"]:active::after {
 } */
 
   @media screen and (max-width: 960px) {
+    /* Navigation changes */
     nav[role='full-horizontal'] ul > li {
       width: 100%;
     }
@@ -628,5 +629,23 @@ div.commentForm button[type="submit"]:active::after {
       -moz-transition: padding 0.2s;
       -o-transition: padding 0.2s;
       transition: padding 0.2s;
+    }
+    /* Remove page container width */
+    #page-container {
+        padding: 0;
+    }
+    /* Center Main Header */
+    h1 {
+        text-align: center;
+    }
+    /* Full width all content */
+    #left-content {
+        float: none;
+    }
+    #right-content {
+        float: none;
+    }
+    #left-content, #right-content {
+        width: inherit;
     }
   }
