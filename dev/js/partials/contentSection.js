@@ -35,16 +35,32 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
 
 var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 	render: function() {
-		var contentNodes = this.props.data.map(function(content) {
-			 return (
-				React.createElement(Content, {identifier: content.id}, 
-					content.text
-				)	
-			);
-		});
-		return (
-		React.createElement("div", {className: "content-wrapper"}, contentNodes)
-		);
+        var content = this.props.data;
+        var contentNodes = [];
+        for (var i = 0; i < content.length; i++) {
+            if (!(i+1 >= content.length) ?  // if iterator isn't longer than array
+                (content[i+1].id != "left-content" && content[i+1].id != "right-content") : // check to see if next content isn't left/right float
+                false) {
+                    contentNodes.push(
+                        React.createElement(Content, {identifier: content[i].id}, 
+                            content[i].text
+                            )	
+                        );
+                    contentNodes.push(
+                        React.createElement("div", {className: "clearfix"}, 
+                            null)
+                        );
+                } else {
+                    contentNodes.push(
+                        React.createElement(Content, {identifier: content[i].id}, 
+                            content[i].text
+                            )	
+                        );
+                }
+        }
+        return (
+                React.createElement("div", {className: "content-wrapper"}, contentNodes)
+               );
 	}
 });
 

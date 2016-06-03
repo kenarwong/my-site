@@ -65,6 +65,14 @@ $(document).ready(function(e){
         }
         else if (sections.length == 1) {
             delays = [300];
+        }
+        else if (sections.length >= 4) {
+            var baseDelays = [400,300,200];
+            delays = baseDelays;
+            for (var i = 0; i < (sections.length - 3); i++) 
+            {
+                delays.push(baseDelays[Math.floor((Math.random()*baseDelays.length) + 1)]); // Randomly add a delay length from baseDelays
+            }
         } else {
             console.log("unrecognized section length of: " + sections.length);
         }
