@@ -380,6 +380,11 @@ footer > h4 {
   width: 400px;
   margin: 0 auto;
 }
+
+.resume a {
+    text-decoration: none;
+    font-weight: 400;
+}
 /* ----------- Comment box ----------- */
 div.commentBox {
   /*background: #386F91;*/
@@ -660,7 +665,7 @@ div.commentForm button[type="submit"]:active::after {
         width: inherit;
     }
     /* Don't show embedded resume on mobile */
-    .resume {
+    .resume > embed {
         display: none;
     }
   }

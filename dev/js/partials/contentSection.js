@@ -82,9 +82,18 @@ var Content = React.createClass({displayName: 'Content',
                 )
             );
     },
+    downloadresume: function(props) {
+        return (
+            React.createElement("div", {className:"content-section resume " + props.contentClass}, 
+                React.createElement("span", null, "Download "),
+                React.createElement("a", {href: "/api/resume/download"}, "here"),
+                React.createElement("span", null, ".")
+                )
+            );
+    },
     embedresume: function(props) {
         return (
-            React.createElement("div", {className:"content-section " + props.contentClass}, 
+            React.createElement("div", {className:"content-section resume " + props.contentClass}, 
                 React.createElement("embed", {src: "/build/files/resume.pdf", height: "800px", width: "100%"}, null)
                 )
             );
