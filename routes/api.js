@@ -5,7 +5,7 @@ var Comment = require('../models/comment.js');
 var Content = require('../models/content.js');
 var router = express.Router();
 var fs = require('fs');
-//var dateFormat = require('dateformat');
+//var dateformat = require('dateformat');
 
 /* Default */
 router.get('/', function(req, res) {
@@ -136,7 +136,7 @@ router.get('/content/:nav?', function(req, res, next) {
 
 /* GET resume download */
 router.get('/resume/download', function(req, res) {
-    var file = __dirname + 'files/resume.pdf';
+    var file = appRoot + '/public/build/files/resume.pdf';
     res.download(file);
 });
 

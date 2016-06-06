@@ -29,6 +29,10 @@ app.use('/', routes);
 app.use('/users', users);
 app.use('/api', api);
 
+app.use(express.static(__dirname + '/public'));
+
+global.appRoot = path.resolve(__dirname);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
@@ -71,6 +75,7 @@ db.once('open', function() {
 // Connect to our mongo database
 mongoose.connect(connectionString);
 
+console.log(__dirname);
 fs.readdirSync(__dirname + '/models').forEach(function(filename) {
       if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
 });
