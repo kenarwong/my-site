@@ -37,9 +37,12 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 	render: function() {
         var content = this.props.data;
         var contentNodes = [];
+
+        // Apply centerfix if followed by a section that isn't floating
+        var classRegex = new RegExp(/left-content|right-content/);
         for (var i = 0; i < content.length; i++) {
             if (!(i+1 >= content.length) ?  // if iterator isn't longer than array
-                (content[i+1].contentClass != "left-content" && content[i+1].contentClass != "right-content") : // check to see if next content isn't left/right float
+                (content[i+1].contentClass.match(classRegex) == null) : // check to see if next content isn't left/right float
                 false) {
                     contentNodes.push(
                         React.createElement(Content, {contentClass: content[i].contentClass, contentType: content[i].contentType}, 
@@ -65,26 +68,25 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 });
 
 var Content = React.createClass({displayName: 'Content',
-    elementTypes: function(contentType) {
-        var types = [{contentType: 'basic',htmlType: 'p'},{contentType: 'image',htmlType: 'img'}];
-        for (var i = 0; i < types.length; i++) {
-            if (types[i].contentType == contentType) {
-                return types[i].htmlType;
-            }
-        }
-
-        return null;
-    },
     basic: function(props) {
-        return React.createElement(props.type, props.attr, props.children);
+        return ( 
+            React.createElement("div", {className:"content-section " + props.contentClass}, 
+                React.createElement('p', null, props.children.toString())
+                )
+            );
+    },
+    image: function(props) {
+        return (
+            React.createElement("div", {className:"content-section image " + props.contentClass}, 
+                React.createElement("div", null, null)
+                )
+            );
     },
     render: function() { 
         if (this.hasOwnProperty(this.props.contentType)) {
             return (
-                React.createElement("div", {className:"content-section " + this.props.contentClass}, 
-                    this[this.props.contentType]({type: this.elementTypes(this.props.contentType), attr: null, children: this.props.children.toString()}) // switch content
-                    )
-            );
+                    this[this.props.contentType](this.props) // switch content
+                    );
         } else {
             console.log("Content render type, " + this.props.contentType + ", does not exist.");
             return null;
