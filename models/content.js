@@ -15,7 +15,7 @@ var schema = new mongoose.Schema({
     navurl          : String
   , text            : String
   , order           : String
-  , contentClass   : String
+  , contentClass    : String
   , contentType     : String
 }, { collection: "content" });
 

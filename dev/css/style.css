@@ -369,6 +369,17 @@ footer > h4 {
   opacity: 0;
 }
 
+.about-img {
+    text-align: center;
+}
+
+.about-img > div {
+  background-image: url('/build/img/blank-person.png');
+  background-repeat: no-repeat;
+  height: 400px;
+  width: 400px;
+  margin: 0 auto;
+}
 /* ----------- Comment box ----------- */
 div.commentBox {
   /*background: #386F91;*/
