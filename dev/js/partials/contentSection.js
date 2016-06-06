@@ -65,6 +65,16 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
 });
 
 var Content = React.createClass({displayName: 'Content',
+    elementTypes: function(contentType) {
+        var types = [{contentType: 'basic',htmlType: 'p'},{contentType: 'image',htmlType: 'img'}];
+        for (var i = 0; i < types.length; i++) {
+            if (types[i].contentType == contentType) {
+                return types[i].htmlType;
+            }
+        }
+
+        return null;
+    },
     basic: function(props) {
         return React.createElement(props.type, props.attr, props.children);
     },
@@ -72,7 +82,7 @@ var Content = React.createClass({displayName: 'Content',
         if (this.hasOwnProperty(this.props.contentType)) {
             return (
                 React.createElement("div", {className:"content-section " + this.props.contentClass}, 
-                    this[this.props.contentType]({type: "p", attr: null, children: this.props.children.toString()}) // switch content
+                    this[this.props.contentType]({type: this.elementTypes(this.props.contentType), attr: null, children: this.props.children.toString()}) // switch content
                     )
             );
         } else {
