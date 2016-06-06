@@ -30,7 +30,8 @@ module.exports = function(grunt) {
                     //'dev/css/normalize.min.css',
                     //'dev/css/main.css',
                     'dev/css/normalize.css',
-                    'dev/css/style.css'
+                    'dev/css/style.css',
+                    'dev/css/fontello.css'
                 ],
                 dest: 'public/build/prod.css',
             }

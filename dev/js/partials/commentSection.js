@@ -127,11 +127,15 @@ var CommentPages = React.createClass({displayName: 'CommentPages',
         var pageNodes = [];
         // Pages label
         //pageNodes.push(React.createElement("span", {className: "commentsPageLabel"}, "Pages"));
-        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,1)}, "<<"));
+        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,1)}, 
+            React.createElement("i", {className: "icon-step-backward"}, null)
+        ));
         for (var i = 1; i <= this.props.pages; i++) {
             pageNodes.push(React.createElement("span", {className: "commentsPage" + (this.props.page == i ? " active" : ""), onClick: this.handlePageClick.bind(this,i)}, i));
         }
-        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,this.props.pages)}, ">>"));
+        pageNodes.push(React.createElement("span", {className: "commentsPage", onClick: this.handlePageClick.bind(this,this.props.pages)}, 
+            React.createElement("i", {className: "icon-step-forward"}, null)
+        ));
         return(
             React.createElement("div", {className: "commentsPageWrapper"}, pageNodes)
         );
