@@ -3,7 +3,7 @@ module.exports = function(grunt) {
     // 1. All configuration goes here 
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
-        clean: ['public/build/', 'dev/js/min/'],
+        clean: ['public/build/', 'dev/js/min/', 'dev/css/rewrite'],
         concat: {
             lib: {
                 src: [
@@ -29,9 +29,9 @@ module.exports = function(grunt) {
                     //'dev/css/bootstrap.min.css',
                     //'dev/css/normalize.min.css',
                     //'dev/css/main.css',
-                    'dev/css/normalize.css',
                     'dev/css/style.css',
-                    'dev/css/fontello.css'
+                    'dev/css/normalize.css',
+                    'dev/css/rewrite/fontello.css'
                 ],
                 dest: 'public/build/prod.css',
             }
@@ -99,6 +99,21 @@ module.exports = function(grunt) {
               dest: 'dev/js/min'
             }]
           }
+        },
+        cssUrlRewrite: {
+            dist: {
+                src: 'dev/css/fontello.css',
+                dest: 'dev/css/rewrite/fontello.css',
+                options: {
+                    skipExternal: true,
+                    rewriteUrl: function(url, options, dataURI) {
+                        console.log(url);
+                        var path = url.replace('dev/', './');
+                        console.log(path);
+                        return path;
+                    }
+                }
+            }
         }
     });
 
@@ -108,11 +123,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     //grunt.loadNpmTasks('grunt-react');
     grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-css-url-rewrite');
 
     // 4. Where we tell Grunt what to do when we type "grunt" into the terminal.
     grunt.registerTask('default', ['clean','concat','copy:jquerymap']);
     grunt.registerTask('reset', ['clean']);
-    grunt.registerTask('prod', ['clean','uglify','concat','copy:jquerymap','copy:fonts','copy:imgs','copy:files']);
+    grunt.registerTask('prod', ['clean','uglify','cssUrlRewrite','concat','copy:jquerymap','copy:fonts','copy:imgs','copy:files']);
     grunt.registerTask('dev', ['clean','copy:devfiles']);
 
 };
