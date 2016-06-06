@@ -369,11 +369,11 @@ footer > h4 {
   opacity: 0;
 }
 
-.about-img {
+.my-pic {
     text-align: center;
 }
 
-.about-img > div {
+.my-pic > div {
   background-image: url('/build/img/blank-person.png');
   background-repeat: no-repeat;
   height: 400px;

@@ -1,4 +1,5 @@
 var express = require('express');
+var path = require('path');
 var NavItem = require('../models/navitem.js');
 var Comment = require('../models/comment.js');
 var Content = require('../models/content.js');
@@ -69,7 +70,7 @@ router.post('/comment', function(req, res) {
 //});
 
 
-/* GET home page. */
+/* GET content. */
 router.get('/content/:nav?', function(req, res, next) {
   var navurl = req.params.nav || 'home';
   //
@@ -131,6 +132,12 @@ router.get('/content/:nav?', function(req, res, next) {
       };
     });
   });
+});
+
+/* GET resume download */
+router.get('/resume/download', function(req, res) {
+    var file = __dirname + 'files/resume.pdf';
+    res.download(file);
 });
 
 module.exports = router;

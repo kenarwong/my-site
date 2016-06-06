@@ -38,8 +38,8 @@ var ContentWrapper = React.createClass({displayName: 'ContentWrapper',
         var content = this.props.data;
         var contentNodes = [];
 
+        // Apply centerfix if followed by a section that isn't floating
         var classRegex = new RegExp(/left-content|right-content/);
-
         for (var i = 0; i < content.length; i++) {
             if (!(i+1 >= content.length) ?  // if iterator isn't longer than array
                 (content[i+1].contentClass.match(classRegex) == null) : // check to see if next content isn't left/right float
