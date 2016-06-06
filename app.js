@@ -75,10 +75,9 @@ db.once('open', function() {
 // Connect to our mongo database
 mongoose.connect(connectionString);
 
-console.log(__dirname);
-fs.readdirSync(__dirname + '/models').forEach(function(filename) {
-      if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
-});
+//fs.readdirSync(__dirname + '/models').forEach(function(filename) {
+//      if (~filename.indexOf('.js')) require(__dirname + '/models/' + filename);
+//});
 
 // production error handler
 // no stacktraces leaked to user

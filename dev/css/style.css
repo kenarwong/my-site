@@ -659,4 +659,8 @@ div.commentForm button[type="submit"]:active::after {
         float: none;
         width: inherit;
     }
+    /* Don't show embedded resume on mobile */
+    .resume {
+        display: none;
+    }
   }

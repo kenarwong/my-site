@@ -82,6 +82,13 @@ var Content = React.createClass({displayName: 'Content',
                 )
             );
     },
+    embedresume: function(props) {
+        return (
+            React.createElement("div", {className:"content-section " + props.contentClass}, 
+                React.createElement("embed", {src: "/build/files/resume.pdf", height: "800px", width: "100%"}, null)
+                )
+            );
+    },
     render: function() { 
         if (this.hasOwnProperty(this.props.contentType)) {
             return (
