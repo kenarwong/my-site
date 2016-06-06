@@ -88,7 +88,7 @@ $(document).ready(function(e){
         // Perform post-mount functions
         $('#main-container').delay(totalDelay).queue(function(next){
             // Post execution functions
-            var postExec = function() {
+            var postMount = function() {
                 $('#main-container').height(''); // Remove height property prior to recording new content height
                 var postTransitionH = $('#main-container').height(); // Record new content height
                 $('#main-container').height(preTransitionH); // Retain preTransitionH height after new content loads
@@ -108,7 +108,7 @@ $(document).ready(function(e){
             // Unmount old component, render new component
             React.unmountComponentAtNode(document.getElementById('main-container')); // React unmount fnc
             React.render(
-                React.createElement(ContentBox, {url: "api/content/" + href, data:[], postExec:postExec}),
+                React.createElement(ContentBox, {url: "api/content/" + href, data:[], postExec:postMount}),
                 document.getElementById('main-container')
                 ); // Mount new content from api
             next();
@@ -123,6 +123,9 @@ $(document).ready(function(e){
 
     $(document).on('click','.content-link > a:not(.disabled)', function(e) {
         $('input#menu-switch').prop('checked',false); // Close menu if open
+        //
+        // Scroll back to top
+        $("html, body").animate({ scrollTop: "0" });
 
         // Prevent link click
         $('.content-link > a').addClass('disabled');
