@@ -108,14 +108,14 @@ var Content = React.createClass({displayName: 'Content',
     github: function(props) {
         return (
                 React.createElement("div", {className:"content-section " + props.contentClass}, 
-                    null
+                    React.createElement(GithubEmbed, null, null)
                     )
                );
     },
     stackoverflow: function(props) {
         return (
                 React.createElement("div", {className:"content-section " + props.contentClass}, 
-                    null
+                    React.createElement(StackOverflowEmbed, null, null)
                     )
                );
     },
@@ -133,15 +133,44 @@ var Content = React.createClass({displayName: 'Content',
 
 var TwitterEmbed = React.createClass({displayName: "Twitter", 
     componentDidMount: function() {
-        var embedCode = "<script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>";
-        var twtrContainer = document.getElementById("twitter-container");
-        twtrContainer.innerHTML += embedCode;
+        if (twttr) twttr.widgets.load();
     },
     render: function() {
         return (
             React.createElement("div", {id:"twitter-container"}, 
-                React.createElement("a", {className: "twitter-timeline", dataHeight: "300", href: "https://twitter.com/kenrhwang"},
+                React.createElement("a", {className: "twitter-timeline", dataHeight: "300", dataTheme: "dark", href: "https://twitter.com/kenrhwang"},
                     "Tweets by kenrhwang")
+                )
+            );
+    }
+});
+
+var GithubEmbed = React.createClass({displayName: "Github",
+    componentDidMount: function() {
+        console.log('github');
+    },
+    render: function() {
+        return (
+            React.createElement("div", {id:"github-container"}, 
+                React.createElement("a", {className: "github-profile", href: "https://github.com/kennyhwang"},
+                    "kennyhwang")
+                )
+            );
+    }
+});
+
+var StackOverflowEmbed = React.createClass({displayName: "StackOverflow",
+    componentDidMount: function() {
+        console.log('stack overflow');
+    },
+    render: function() {
+        return (
+            React.createElement("div", {id:"stackoverflow-container"}, 
+                React.createElement("a", {className: "stackoverflow-profile", href: "http://stackoverflow.com/users/2855317/ken-hwang"},
+                    React.createElement("img", {src: "http://stackoverflow.com/users/flair/2855317.png?theme=dark", width: "208", height:"58", alt:"Profile for Ken Hwang at Stack Overflow", title:"Profile for Ken Hwang at Stack Overflow"},
+                        null
+                        )
+                    )
                 )
             );
     }

@@ -12,6 +12,7 @@ module.exports = function(grunt) {
                     'dev/js/libs/react.min.js',
                     'dev/js/libs/modernizr-2.8.3-respond-1.4.2.min.js',
                     'dev/js/libs/date.format.min.js',
+                    'dev/js/libs/widgets.js',
                     //'dev/js/min/*.js'  // My files
                     ],
                 dest: 'public/build/lib.js',
