@@ -153,7 +153,7 @@ var GithubEmbed = React.createClass({displayName: "Github",
         return (
             React.createElement("div", {id:"github-container"}, 
                 React.createElement("a", {className: "github-profile", href: "https://github.com/kennyhwang"},
-                    "kennyhwang")
+                    null)
                 )
             );
     }
