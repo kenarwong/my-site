@@ -98,6 +98,27 @@ var Content = React.createClass({displayName: 'Content',
                 )
             );
     },
+    twitter: function(props) {
+        return (
+                React.createElement("div", {className:"content-section " + props.contentClass}, 
+                    React.createElement(TwitterEmbed, null, null)
+                    )
+               );
+    },
+    github: function(props) {
+        return (
+                React.createElement("div", {className:"content-section " + props.contentClass}, 
+                    null
+                    )
+               );
+    },
+    stackoverflow: function(props) {
+        return (
+                React.createElement("div", {className:"content-section " + props.contentClass}, 
+                    null
+                    )
+               );
+    },
     render: function() { 
         if (this.hasOwnProperty(this.props.contentType)) {
             return (
@@ -107,6 +128,22 @@ var Content = React.createClass({displayName: 'Content',
             console.log("Content render type, " + this.props.contentType + ", does not exist.");
             return null;
         }
+    }
+});
+
+var TwitterEmbed = React.createClass({displayName: "Twitter", 
+    componentDidMount: function() {
+        var embedCode = "<script async src='//platform.twitter.com/widgets.js' charset='utf-8'></script>";
+        var twtrContainer = document.getElementById("twitter-container");
+        twtrContainer.innerHTML += embedCode;
+    },
+    render: function() {
+        return (
+            React.createElement("div", {id:"twitter-container"}, 
+                React.createElement("a", {className: "twitter-timeline", dataHeight: "300", href: "https://twitter.com/kenrhwang"},
+                    "Tweets by kenrhwang")
+                )
+            );
     }
 });
 
