@@ -104,7 +104,7 @@ router.get('/content/:nav?', function(req, res, next) {
 
   navqry.then(function(navitems) {
       navdata = {
-        title: navitems[0].friendlyname,
+        header: navitems[0].friendlyname,
         navitems: navitems
       };
 
@@ -118,7 +118,7 @@ router.get('/content/:nav?', function(req, res, next) {
   }).then(function(navresults) {
     contentqry.then(function(contentresults) {
       if (contentresults.length == 0) {
-        console.log('content not found: ' + navresults.navdata.title);
+        console.log('content not found: ' + navresults.navdata.header);
 
         res.status(404).render('error', {
           message: 'Not found',
@@ -126,7 +126,8 @@ router.get('/content/:nav?', function(req, res, next) {
         });
       } else {
         res.json({
-          title: navresults.navdata.title, 
+          title: 'Ken Hwang | ' + navresults.navdata.header,
+          header: navresults.navdata.header, 
           data: contentresults
         });
       };

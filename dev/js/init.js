@@ -134,7 +134,7 @@ $(document).ready(function(e){
             $('.content-link > a').removeClass('disabled');
 
             // Change title
-            document.title = document.getElementsByTagName('h1')[0].innerHTML;
+            //document.title = document.getElementsByTagName('h1')[0].innerHTML;
         };
 
         // TODO: fallback if libs fail

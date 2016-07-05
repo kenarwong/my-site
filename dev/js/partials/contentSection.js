@@ -9,8 +9,12 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
       url: this.props.url,
       dataType: 'json',
       success: function(response) {
-        this.setState({title: response.title, data: response.data});
+        this.setState({title: response.title, header: response.header, data: response.data});
         this.props.postExec();
+
+        // Change title
+        document.title = this.state.title;
+
       }.bind(this),
       error: function(xhr, status, err) {
         console.error(this.props.url, status, err.toString());
@@ -18,7 +22,7 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
     });
   },
   getInitialState: function() {
-    return {title: this.props.title, data: this.props.data};
+    return {title: this.props.title, header: this.props.header, data: this.props.data};
   }, 
   componentDidMount: function() {
   	this.loadContentFromServer();
@@ -26,7 +30,7 @@ var ContentBox = React.createClass({displayName: 'ContentBox',
   render: function() {
     return (
         React.createElement("div", {ref: "content", className:"main wrapper clearfix"},
-          React.createElement("h1", {className: "content-header"}, this.state.title),
+          React.createElement("h1", {className: "content-header"}, this.state.header),
           React.createElement(ContentWrapper, {data: this.state.data})
           )
         );

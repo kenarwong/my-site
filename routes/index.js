@@ -52,7 +52,8 @@ router.get('/:nav?', function(req, res, next) {
       return {httpcode: 404};
     } else {
       navdata = {
-        title: navfilter[0].friendlyname,
+        title: 'Ken Hwang | ' + navfilter[0].friendlyname,
+        header: navfilter[0].friendlyname,
         thisurl: navfilter[0].navurl,
         navitems: navitems
       };
@@ -78,6 +79,7 @@ router.get('/:nav?', function(req, res, next) {
         var reactHtml = ReactDOMServer.renderToString(
             ReactPartial({
               title: navresults.navdata.title,
+              header: navresults.navdata.header,
               data: contentresults
             })
             );
