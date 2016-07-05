@@ -83,6 +83,7 @@ router.get('/:nav?', function(req, res, next) {
             );
 
         vm.title = siteTitle + ' | ' + navresults.navdata.header;
+        vm.description = siteDescription;
         vm.maincontent = reactHtml;
 
         res.render('index', vm
