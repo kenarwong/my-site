@@ -126,7 +126,7 @@ router.get('/content/:nav?', function(req, res, next) {
         });
       } else {
         res.json({
-          title: 'Ken Hwang | ' + navresults.navdata.header,
+          title: siteTitle + ' | ' + navresults.navdata.header,
           header: navresults.navdata.header, 
           data: contentresults
         });
