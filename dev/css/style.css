@@ -614,6 +614,11 @@ div.commentForm button[type="submit"]:active::after {
       padding: .5em 0;
     }
 
+    /* Don't show social links in mobile.  TODO: Format in mobile */ 
+    nav div.social-link-wrapper {
+        display: none;
+    }
+
     /* Menu link show/hide and transition */
     nav input[type="checkbox"] + ul {
       opacity: 0;
@@ -629,14 +634,14 @@ div.commentForm button[type="submit"]:active::after {
       -o-transition: opacity 0.2s;
       transition: opacity 0.2s;
     }
-    nav input[type="checkbox"] + ul > li, nav input[type="checkbox"] + ul > div.social-link-wrapper > li {
+    nav input[type="checkbox"] + ul > li {
       max-height: 0;
       -webkit-transition: max-height 0.2s;
       -moz-transition: max-height 0.2s;
       -o-transition: max-height 0.2s;
       transition: max-height 0.2s;
     }
-    nav input[type="checkbox"]:checked + ul > li, nav input[type="checkbox"]:checked + ul > div.social-link-wrapper > li {
+    nav input[type="checkbox"]:checked + ul > li {
       max-height: 25em;
       -webkit-transition: max-height 0.2s;
       -moz-transition: max-height 0.2s;
