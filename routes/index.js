@@ -52,7 +52,7 @@ router.get('/:nav?', function(req, res, next) {
       return {httpcode: 404};
     } else {
       navdata = {
-        title: navfilter[0].friendlyname,
+        header: navfilter[0].friendlyname,
         thisurl: navfilter[0].navurl,
         navitems: navitems
       };
@@ -77,11 +77,13 @@ router.get('/:nav?', function(req, res, next) {
         var ReactPartial = React.createFactory(require('../dev/js/partials/contentSection.js').ReactPartial);
         var reactHtml = ReactDOMServer.renderToString(
             ReactPartial({
-              title: navresults.navdata.title,
+              header: navresults.navdata.header,
               data: contentresults
             })
             );
 
+        vm.title = siteTitle + ' | ' + navresults.navdata.header;
+        vm.description = siteDescription;
         vm.maincontent = reactHtml;
 
         res.render('index', vm

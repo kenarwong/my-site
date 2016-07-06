@@ -384,6 +384,21 @@ footer > h4 {
     text-decoration: none;
     font-weight: 400;
 }
+
+#github-container > a {
+  margin: 0 auto;
+  display: block;
+  height: 69px;
+  width: 150px;
+  background-size: 150px 70px;
+  background-repeat: no-repeat;
+  background-image: url('/build/img/GitHub_Logo.png');
+}
+
+#stackoverflow-container {
+  text-align: center;
+  margin-top: 1em;
+}
 /* ----------- Comment box ----------- */
 div.commentBox {
   /*background: #386F91;*/
