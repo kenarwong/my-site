@@ -90,6 +90,9 @@ nav li {
   text-align: center;
   list-style: none;
 }
+nav li.social-link {
+  float: right;
+}
 nav a {
   display: block;
   width: 100%;
@@ -590,7 +593,7 @@ div.commentForm button[type="submit"]:active::after {
 } */
 
   @media screen and (max-width: 960px) {
-    /* Navigation changes */
+    /* Mobile navigation formatting */
     nav[role='full-horizontal'] ul > li {
       width: 100%;
     }
@@ -607,64 +610,40 @@ div.commentForm button[type="submit"]:active::after {
     nav ul {
       padding: 0 1em;
     }
+    nav input[type="checkbox"] + ul > li > a {
+      padding: .5em 0;
+    }
+
+    /* Menu link show/hide and transition */
     nav input[type="checkbox"] + ul {
-      /*visibility: hidden;*/
       opacity: 0;
       -webkit-transition: opacity 0.2s;
       -moz-transition: opacity 0.2s;
       -o-transition: opacity 0.2s;
       transition: opacity 0.2s;
     }
-    nav input[type="checkbox"] + ul > li {
-      /*display: none;*/
-      /*visibility: hidden;
-      opacity: 0;*/
-      max-height: 0;
-      -webkit-transition: max-height 0.2s;
-      -moz-transition: max-height 0.2s;
-      -o-transition: max-height 0.2s;
-      transition: max-height 0.2s;
-    }
-    nav input[type="checkbox"] + ul > li > a {
-      display: none;
-
-      padding: 0;
-      -webkit-transition: padding 0.2s;
-      -moz-transition: padding 0.2s;
-      -o-transition: padding 0.2s;
-      transition: padding 0.2s;
-    }
-    nav input[type="checkbox"] + ul {
-      /*height: 0;*/
-      /*opacity: 0;*/
-    }
     nav input[type="checkbox"]:checked + ul {
-      /*visibility: visible;*/
       opacity: 1;
       -webkit-transition: opacity 0.2s;
       -moz-transition: opacity 0.2s;
       -o-transition: opacity 0.2s;
       transition: opacity 0.2s;
     }
-    nav input[type="checkbox"]:checked + ul > li {
-      /*display: block;*/
-      /*visibility: visible;
-      opacity: 1;*/
+    nav input[type="checkbox"] + ul > li, nav input[type="checkbox"] + ul > div.social-link-wrapper > li {
+      max-height: 0;
+      -webkit-transition: max-height 0.2s;
+      -moz-transition: max-height 0.2s;
+      -o-transition: max-height 0.2s;
+      transition: max-height 0.2s;
+    }
+    nav input[type="checkbox"]:checked + ul > li, nav input[type="checkbox"]:checked + ul > div.social-link-wrapper > li {
       max-height: 25em;
       -webkit-transition: max-height 0.2s;
       -moz-transition: max-height 0.2s;
       -o-transition: max-height 0.2s;
       transition: max-height 0.2s;
     }
-    nav input[type="checkbox"]:checked + ul > li > a {
-      display: block;
 
-      padding: .5em 0;
-      -webkit-transition: padding 0.2s;
-      -moz-transition: padding 0.2s;
-      -o-transition: padding 0.2s;
-      transition: padding 0.2s;
-    }
     /* Remove page container width */
     #page-container {
         padding: 0;

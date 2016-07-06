@@ -85,6 +85,9 @@ router.get('/:nav?', function(req, res, next) {
         vm.title = siteTitle + ' | ' + navresults.navdata.header;
         vm.description = siteDescription;
         vm.maincontent = reactHtml;
+        vm.twitter = twitterLink;
+        vm.stackoverflow = stackoverflowLink;
+        vm.github = githubLink;
 
         res.render('index', vm
             //{ 
