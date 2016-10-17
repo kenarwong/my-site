@@ -34,6 +34,9 @@ app.use(express.static(__dirname + '/public'));
 global.appRoot = path.resolve(__dirname);
 global.siteTitle = 'Ken Hwang';
 global.siteDescription = "Ken Hwang -- web developer, programming enthusiast, gamer, and guitarist";
+global.twitterLink = 'https://twitter.com/kenrhwang';
+global.stackoverflowLink = 'https://stackoverflow.com/users/2855317/ken-hwang';
+global.githubLink = 'https://github.com/kennyhwang';
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
