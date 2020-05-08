@@ -18,7 +18,7 @@
     "express": "^4.12.4",
     "grunt": ">=0.4.5",
     "jquery": "^2.1.4",
-    "mongoose": "^4.0.3",
+    "mongoose": "^5.7.8",
     "morgan": "~1.5.1",
     "react": "^15.1.0",
     "serve-favicon": "^2.2.0"
